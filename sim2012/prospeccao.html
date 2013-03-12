@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+<head>
+<title>SIM</title>
+<meta name="date" content="17/6/2006 16:14" />
+<meta name="author" content="AWSoft!" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	
+<link type="text/css" rel="stylesheet" href="style2012.css" />
+<link type="text/css" rel="stylesheet" href="js/lightbox/lightbox.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="js/tabber/tabber.css" />
+<script type="text/javascript" src="js/tabber/tabber.js"></script>
+<script type="text/javascript" src="js/lightbox/prototype.js"></script>
+<script type="text/javascript" src="js/lightbox/scriptaculous.js?load=effects"></script>
+<script type="text/javascript" src="js/lightbox/lightbox.js"></script>
+<script type="text/javascript" src="js/tooltip/tooltip.js"></script>
+<script type="text/javascript"> document.write('<style type="text/css">.tabber{display:none;}<\/style>'); </script>
+
+    <script src="js/JSCal/src/js/jscal2.js"></script>
+    <script src="js/JSCal/src/js/lang/pt.js"></script>
+    <link rel="stylesheet" type="text/css" href="js/JSCal/src/css/jscal2.css" />
+    <link rel="stylesheet" type="text/css" href="js/JSCal/src/css/border-radius.css" />
+    <link rel="stylesheet" type="text/css" href="js/JSCal/src/css/win2k/win2k.css" />
+
+<style>
+* html * { color: expression( (function(who){ if(!who.MXPC){
+ who.MXPC = '1';
+ if(who.nodeName != 'A'){
+  who.onmouseenter=function(){ who.className += ' hover'};
+  who.onmouseleave=function(){ who.className = who.className.replace(' hover','')}; }
+ (who==who.parentNode.firstChild) ? who.className += ' first-child' : '' ;
+} } )(this) , ' auto') }
+</style>
+
+</head>
+
+<body>
+
+<div id="page-wrap">
+
+	<div id="header">
+		<div id="top">
+			<div class="left"><a href="index.html" title="AWSoft!"><img src="images/logo_sim.jpg" border="0" alt="" style="max-height: 65px;" /></a></div>
+			<div class="right">
+				olá <b>Admin!</b> &nbsp;|&nbsp;
+				<a href="" title="Minha Conta">Minha Conta</a> &nbsp;|&nbsp; 
+				<a href="" title="Sair" style="color: #F00;">Sair</a>
+			</div>
+		</div>
+
+		<ul class="menu-hv">
+		 <li><a href="index.html" title="Home">Home</a></li>
+		 <li><a href="#">Produtos</a>
+		  <ul>
+		   <li><a href="#">Categorias</a></li>
+		   <li><a href="#">Grupos</a></li>
+		  </ul>
+		 </li>
+		 <li><a href="#">Pedidos</a>
+		 <li><a href="#">Ferramentas</a>
+		  <ul>
+		   <li><a href="#">Links</a></li>
+		   <li><a href="#">Banners</a></li>
+		   <li><a href="#">Configurações</a></li>
+		  </ul>
+		 </li>
+		 <li><a href="#">Usuários</a>
+		</ul>
+	</div>
+
+	<div id="main-content">
+		<div id="main" style="margin-left: 15px;">
+			<div id="crumbs">Você está em: Painel de Negócios</div>
+
+			<a href="prospeccao.html" title="Painel de Negócios"><img src="images/ico_negocios.png" title="Painel de Negócios" alt="Painel de Negócios" class="icon_title" /></a>
+			<h1>Painel de Negócios</h1>
+
+			<div class="left">
+				<p style="padding-bottom: 10px;">Página <b>1</b> de <b>10</b>, mostrando <b>15</b> de <b>150</b> negociações em andamento</p>
+				<a href="" title="">Listagem original</a> | <a href="" title="">Listagem clássica</a>
+			</div>
+			<div class="pg_right">
+				Primeira | Anterior | <a href="">Próxima</a> | <a href="">Última</a>
+				<div class="pages">
+					<span class="pages_crr">01</span>&nbsp;
+					<a title="Página 02" href="">02</a>&nbsp;
+					<a title="Página 03" href="">03</a>&nbsp;
+				</div>
+			</div>
+
+			<div class="line" style="margin-bottom: 15px;">&nbsp;</div>
+
+			<div class="left" style="margin-right: 30px;">
+				<strong>Filtrar:</strong><br />
+				<select name="" style="width: 250px;">
+					<option value="">Negociações em andamento</option>
+					<option value="">....</option>
+				</select>
+			</div>
+
+			<div class="left" style="margin-right: 30px;">
+				<strong>A partir do dia:</strong><br />
+				<input type="text" name="dataPublicacao" id="dataPublicacao" maxlength="10" readonly class="ipt_text" style="width: 129px;" />&nbsp;
+
+				<a href="javascript:void(-1);"><img width="16" height="16" alt="Utilize o Calendário!" title="Utilize o Calendário!" border="0" id="trigger_dataPublicacao" src="js/JSCal/src/css/jscalendar.gif" /></a>
+				<script type="text/javascript">//<![CDATA[
+					Calendar.setup({
+						inputField : "dataPublicacao",
+                        trigger    : "trigger_dataPublicacao",
+                        onSelect   : function() { this.hide() },
+                        showTime   : 24,
+                        dateFormat : "%d/%m/%Y %I:%M"
+                    });
+					//]]>
+				</script>
+			</div>
+
+			<div class="left" style="margin-right: 30px;">
+				<strong>Até o dia:</strong><br />
+				<input type="text" name="dataPublicacao" id="dataPublicacao" maxlength="10" readonly class="ipt_text" style="width: 129px;" />
+
+				<a href="javascript:void(-1);"><img width="16" height="16" alt="Utilize o Calendário!" title="Utilize o Calendário!" border="0" id="trigger_dataPublicacao" src="js/JSCal/src/css/jscalendar.gif" /></a>
+				<script type="text/javascript">//<![CDATA[
+					Calendar.setup({
+						inputField : "dataPublicacao",
+                        trigger    : "trigger_dataPublicacao",
+                        onSelect   : function() { this.hide() },
+                        showTime   : 24,
+                        dateFormat : "%d/%m/%Y %I:%M"
+                    });
+					//]]>
+				</script>
+			</div>
+
+			<div class="right">
+				<strong>Buscar por nº da proposta:</strong><br />
+				<input type="text" name="" value="Buscar Negociação" onfocus="if(this.value==this.defaultValue)this.value=''" onblur="if(this.value=='')this.value=this.defaultValue" class="ipt_text" style="width: 129px;" />
+				<input type="submit" value="ok!" class="ipt_butt" style="width: 45px;" />
+			</div>
+
+			<div class="clear"></div>
+
+			<table width="100%" cellpadding="0" cellspacing="0" class="table_ab">
+				<tr>
+					<td class="tha" width="50">ID</td>
+					<td class="tha" style="width: 128px;">Início Negociação</td>
+					<td class="tha" style="width: 128px;">Próximo Passo</td>
+					<td class="tha" style="width: 128px;">Próximo Contato &nbsp;<a href="#x" title="Ordem Crescente"><img src="images/b_top_b.gif" alt="Ordem Crescente" border="0" /></a> <a href="#x" title="Ordem Decrescente"><img src="images/b_bottom_b.gif" alt="Ordem Decrescente" border="0" /></a></td>
+					<td class="tha" style="width: 128px;">Probabilidade &nbsp;<a href="#x" title="Ordem Crescente"><img src="images/b_top_b.gif" alt="Ordem Crescente" border="0" /></a> <a href="#x" title="Ordem Decrescente"><img src="images/b_bottom_b.gif" alt="Ordem Decrescente" border="0" /></a></td>
+					<td class="tha" style="width: 128px;">Valor Proposta &nbsp;<a href="#x" title="Ordem Crescente"><img src="images/b_top_b.gif" alt="Ordem Crescente" border="0" /></a> <a href="#x" title="Ordem Decrescente"><img src="images/b_bottom_b.gif" alt="Ordem Decrescente" border="0" /></a></td>
+					<td class="tha" style="width: 128px;">Responsável &nbsp;<a href="#x" title="Ordem Crescente"><img src="images/b_top_b.gif" alt="Ordem Crescente" border="0" /></a> <a href="#x" title="Ordem Decrescente"><img src="images/b_bottom_b.gif" alt="Ordem Decrescente" border="0" /></a></td>
+					<td class="tha" style="width: 128px;">Em contato com</td>
+					<td class="tha">Nome Prospect &nbsp;<a href="#x" title="Ordem Crescente"><img src="images/b_top_b.gif" alt="Ordem Crescente" border="0" /></a> <a href="#x" title="Ordem Decrescente"><img src="images/b_bottom_b.gif" alt="Ordem Decrescente" border="0" /></a></td>
+				</tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';" class="row_a">
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">5673</a></td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">15/01/2013</a></td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">Enviar Proposta</a></td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">04/02/2013</a></td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">90%</a></td>
+					<td class="td_a"><a href="#x" onMouseover="ddrivetip('Valor Proposta: R$ 299,00<br />Desconto: 10%<br />Valor Final: R$ 269,10')"; onMouseout="hideddrivetip()"><img src="images/money.png" class="icon_money" /></a>&nbsp; R$ 269,10</td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">Evandro Bueno</a></td>
+					<td class="td_a"><a href="#x" onMouseover="ddrivetip('Telefone: (11) 2158-0571')"; onMouseout="hideddrivetip()"><img src="images/telephone.png" /></a> Rafael Moura</td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">Casa do Chocolate</a> <span style="color: #555; background: #FFFFE1; font-size: 10px; float: right;">&nbsp;<a style="font-weight:normal;" href="orcamentos.php" title="">entrada</a>&nbsp;</span></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+					<td class="td_a"><a class="status0" title="" href="prospeccao_edita.html">3534</a></td>
+					<td class="td_a"><a class="status0" title="" href="prospeccao_edita.html">15/01/2013</a></td>
+					<td class="td_a"><a class="status0" title="" href="prospeccao_edita.html">Ligar novamente</a></td>
+					<td class="td_a"><a class="status0" title="" href="prospeccao_edita.html">04/02/2013</a></td>
+					<td class="td_a"><a class="status0" title="" href="prospeccao_edita.html">50%</a></td>
+					<td class="td_a"><a href="#x" onMouseover="ddrivetip('Valor Proposta: R$ 299,00<br />Desconto: 10%<br />Valor Final: R$ 269,10')"; onMouseout="hideddrivetip()"><img src="images/money.png" class="icon_money" /></a>&nbsp; R$ 269,10</td>
+					<td class="td_a"><a class="status0" title="" href="prospeccao_edita.html">Kelly Andrade</a></td>
+					<td class="td_a"><a href="#x" onMouseover="ddrivetip('Telefone: (11) 2158-0571')"; onMouseout="hideddrivetip()"><img src="images/telephone.png" /></a> Rafael Moura</td>
+					<td class="td_a"><a class="status0" title="" href="prospeccao_edita.html">WGB Automação</a> <span style="color: #555; background: #FFFFE1; font-size: 10px; float: right;">&nbsp;<a style="font-weight:normal;" href="orcamentos.php" title="">entrada</a>&nbsp;</span></td>
+				</tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';" class="row_a">
+					<td class="td_a"><a class="status1" title="" href="prospeccao_edita.html">1233</a></td>
+					<td class="td_a"><a class="status1" title="" href="prospeccao_edita.html">15/01/2013</a></td>
+					<td class="td_a"><a class="status1" title="" href="prospeccao_edita.html">Enviar Fatura</a></td>
+					<td class="td_a"><a class="status1" title="" href="prospeccao_edita.html">04/02/2013</a></td>
+					<td class="td_a">-</td>
+					<td class="td_a"><a href="#x" onMouseover="ddrivetip('Valor Proposta: R$ 299,00<br />Desconto: 10%<br />Valor Final: R$ 269,10')"; onMouseout="hideddrivetip()"><img src="images/money.png" class="icon_money" /></a>&nbsp; R$ 5.900,00</td>
+					<td class="td_a"><a class="status1" title="" href="prospeccao_edita.html">Kelly Andrade</a></td>
+					<td class="td_a"><a href="#x" onMouseover="ddrivetip('Telefone: (11) 2158-0571')"; onMouseout="hideddrivetip()"><img src="images/telephone.png" /></a> Rafael Moura</td>
+					<td class="td_a"><a class="status1" title="" href="prospeccao_edita.html">Itaú BBA</a> <span style="color: #555; background: #FFFFE1; font-size: 10px; float: right;">&nbsp;<a style="font-weight:normal;" href="orcamentos.php" title="">entrada</a>&nbsp;</span></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">6788</a></td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">15/01/2013</a></td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">Enviar Proposta</a></td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">04/02/2013</a></td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">90%</a></td>
+					<td class="td_a"><a href="#x" onMouseover="ddrivetip('Valor Proposta: R$ 299,00<br />Desconto: 10%<br />Valor Final: R$ 269,10')"; onMouseout="hideddrivetip()"><img src="images/money.png" class="icon_money" /></a>&nbsp; R$ 269,10</td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">Evandro Bueno</a></td>
+					<td class="td_a"><a href="#x" onMouseover="ddrivetip('Telefone: (11) 2158-0571')"; onMouseout="hideddrivetip()"><img src="images/telephone.png" /></a> Rafael Moura</td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">Imediato Brindes</a> <span style="color: #555; background: #FFFFE1; font-size: 10px; float: right;">&nbsp;<a style="font-weight:normal;" href="orcamentos.php" title="">entrada</a>&nbsp;</span></td>
+				</tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';" class="row_a">
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">4566</a></td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">15/01/2013</a></td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">Enviar Proposta</a></td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">04/02/2013</a></td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">90%</a></td>
+					<td class="td_a"><a href="#x" onMouseover="ddrivetip('Valor Proposta: R$ 299,00<br />Desconto: 10%<br />Valor Final: R$ 269,10')"; onMouseout="hideddrivetip()"><img src="images/money.png" class="icon_money" /></a>&nbsp; R$ 269,10</td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">Evandro Bueno</a></td>
+					<td class="td_a"><a href="#x" onMouseover="ddrivetip('Telefone: (11) 2158-0571')"; onMouseout="hideddrivetip()"><img src="images/telephone.png" /></a> Rafael Moura</td>
+					<td class="td_a"><a class="status3" title="" href="prospeccao_edita.html">Imediato Brindes</a> <span style="color: #555; background: #FFFFE1; font-size: 10px; float: right;">&nbsp;<a style="font-weight:normal;" href="orcamentos.php" title="">entrada</a>&nbsp;</span></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+					<td class="td_a"><a class="status5" title="" href="prospeccao_edita.html">1090</a></td>
+					<td class="td_a"><a class="status5" title="" href="prospeccao_edita.html">01/12/2012</a></td>
+					<td class="td_a"><a class="status5" title="" href="prospeccao_edita.html">Ligar novamente</a></td>
+					<td class="td_a"><a class="status5" title="" href="prospeccao_edita.html">10/02/2013</a></td>
+					<td class="td_a"><a class="status5" title="" href="prospeccao_edita.html">40%</a></td>
+					<td class="td_a"><a href="#x" onMouseover="ddrivetip('Valor Proposta: R$ 299,00<br />Desconto: 10%<br />Valor Final: R$ 269,10')"; onMouseout="hideddrivetip()"><img src="images/money.png" class="icon_money" /></a>&nbsp; R$ 830,00</td>
+					<td class="td_a"><a class="status5" title="" href="prospeccao_edita.html">Ricardo Oliveira</a></td>
+					<td class="td_a"><a href="#x" onMouseover="ddrivetip('Telefone: (11) 2158-0571')"; onMouseout="hideddrivetip()"><img src="images/telephone.png" /></a> Rafael Moura</td>
+					<td class="td_a"><a class="status5" title="" href="prospeccao_edita.html">RH Benefícios</a> <span style="color: #555; background: #FFFFE1; font-size: 10px; float: right;">&nbsp;<a style="font-weight:normal;" href="orcamentos.php" title="">entrada</a>&nbsp;</span></td>
+				</tr>
+			</table>
+
+			<div style="padding-top: 15px;">
+				<span style="font-weight: bold;">Ação <a href="#x" onMouseover="ddrivetip('Selecione os itens da listagem para aplicar as ações')"; onMouseout="hideddrivetip()">?</a></span> &nbsp;
+				<select name="" style="width: 25%;">
+					<option value="">Ordenar registros</option>
+					<option value="">Excluir selecionados</option>
+				</select> &nbsp;
+				<input type="submit" value="Definir" class="ipt_butt" style="width: 85px;" />
+			</div>
+
+			<div class="line" style="margin-bottom: 0px;">&nbsp;</div>
+
+            <div class="clear" style="line-height: 22px; font-size: 11px;"><br />
+                legenda dos status:<br />
+                <span style="color:#444444; font-weight: bold;"> Concluído</span> &nbsp;&nbsp;
+				<span style="color:#ff0000; font-weight: bold;"> Cancelado</span> &nbsp;&nbsp;
+                <span style="color:#cc00ff; font-weight: bold;"> Congelado</span> &nbsp;&nbsp;
+				<span style="color:#6666ff; font-weight: bold;"> Em andamento</span> &nbsp;&nbsp;
+            </div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<div class="clear">&nbsp;</div>
+<div id="footer">
+	<p>2005-2011 &copy; SIM V 0.06 - Desenvolvimento <a href="http://www.awsoft.com.br" target="_blank" title="AWSoft!">AWSoft!</a></p>
+</div>
+
+</body>
+</html>

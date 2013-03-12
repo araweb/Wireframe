@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+<head>
+<title>SIM</title>
+<meta name="date" content="17/6/2006 16:14" />
+<meta name="author" content="AWSoft!" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	
+<link type="text/css" rel="stylesheet" href="style2012.css" />
+<link type="text/css" rel="stylesheet" href="js/lightbox/lightbox.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="js/tabber/tabber.css" />
+<script type="text/javascript" src="js/tabber/tabber.js"></script>
+<script type="text/javascript" src="js/lightbox/prototype.js"></script>
+<script type="text/javascript" src="js/lightbox/scriptaculous.js?load=effects"></script>
+<script type="text/javascript" src="js/lightbox/lightbox.js"></script>
+<script type="text/javascript" src="js/tooltip/tooltip.js"></script>
+<script type="text/javascript"> document.write('<style type="text/css">.tabber{display:none;}<\/style>'); </script>
+
+<style>
+* html * { color: expression( (function(who){ if(!who.MXPC){
+ who.MXPC = '1';
+ if(who.nodeName != 'A'){
+  who.onmouseenter=function(){ who.className += ' hover'};
+  who.onmouseleave=function(){ who.className = who.className.replace(' hover','')}; }
+ (who==who.parentNode.firstChild) ? who.className += ' first-child' : '' ;
+} } )(this) , ' auto') }
+</style>
+
+</head>
+
+<body>
+
+<div id="page-wrap">
+
+	<div id="header">
+		<div id="top">
+			<div class="left"><a href="index.html" title="AWSoft!"><img src="images/logo_sim.jpg" border="0" alt="" style="max-height: 65px;" /></a></div>
+			<div class="right">
+				olá <b>Admin!</b> &nbsp;|&nbsp;
+				<a href="" title="Minha Conta">Minha Conta</a> &nbsp;|&nbsp; 
+				<a href="" title="Sair" style="color: #F00;">Sair</a>
+			</div>
+		</div>
+
+		<ul class="menu-hv">
+		 <li><a href="index.html" title="Home">Home</a></li>
+		 <li><a href="#">Produtos</a>
+		  <ul>
+		   <li><a href="#">Categorias</a></li>
+		   <li><a href="#">Grupos</a></li>
+		  </ul>
+		 </li>
+		 <li><a href="#">Pedidos</a>
+		 <li><a href="#">Ferramentas</a>
+		  <ul>
+		   <li><a href="#">Links</a></li>
+		   <li><a href="#">Banners</a></li>
+		   <li><a href="#">Configurações</a></li>
+		  </ul>
+		 </li>
+		 <li><a href="#">Usuários</a>
+		</ul>
+	</div>
+
+	<div id="main-content">
+		<div id="main">
+			<div id="crumbs">Você está em: <a href="home" title="">Produtos</a> &gt; <a href="">Categorias</a></div>
+
+			<h1>Listagem com Checkbox</h1>
+
+			<div class="left">
+				<p style="padding-bottom: 10px;">Página <b>1</b> de <b>15</b>, mostrando <b>15</b> de <b>215</b> registros cadastrados</p>
+				<a href="" title="">Listagem original</a> | <a href="" title="">Listagem clássica</a>
+			</div>
+			<div class="pg_right">
+				Primeira | Anterior | <a href="">Próxima</a> | <a href="">Última</a>
+				<div class="pages">
+					<span class="pages_crr">01</span>&nbsp;
+					<a title="Página 02" href="">02</a>&nbsp;
+					<a title="Página 03" href="">03</a>&nbsp;
+				</div>
+			</div>
+
+			<div class="line" style="margin-bottom: 15px;">&nbsp;</div>
+
+			<span style="font-weight: bold;">Ação <a href="#x" onMouseover="ddrivetip('Selecione os itens da listagem para aplicar as ações')"; onMouseout="hideddrivetip()">?</a></span> &nbsp;
+			<select name="" style="width: 25%;">
+				<option value="">Ordenar registros</option>
+				<option value="">Excluir selecionados</option>
+			</select> &nbsp;
+			<input type="submit" value="Definir" class="ipt_butt" style="width: 85px;" />
+
+			<table width="100%" cellpadding="0" cellspacing="0" class="table_ab">
+				<tr>
+					<td class="tha" style="width: 15px;"><input type="checkbox" name="OPÇÃO-MARCAR-TODOS" /></td>
+					<td class="tha">ID</td>
+					<td class="tha" style="width: 55px;">Nº Banco</td>
+					<td class="tha">Número do Documento</td>
+					<td class="tha">Vencimento</td>
+					<td class="tha">Sacado</td>
+					<td class="tha" style="width: 90px;">Ações</td>
+				</tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';" class="row_a">
+					<td class="td_a"><input type="checkbox" name="" /></td>
+					<td class="td_a"><a class="status2" title="" href="">1</a></td>
+					<td class="td_a"><input type="text" name="" value="341" class="input_list" /></td>
+					<td class="td_a"><input type="text" name="" class="input_list" /> <a class="status2" title="" href="">1106071447541/564</a></td>
+					<td class="td_a"><a class="status2" title="" href="">20/06/2011</a></td>
+					<td class="td_a"><a class="status2" title="" href="">Brindes Brasil</a></td>
+					<td class="td_a"><a href="" title="Editar">Editar</a> | <a href="" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+					<td class="td_a"><input type="checkbox" name="" /></td>
+					<td class="td_a"><a class="status2" title="" href="">2</a></td>
+					<td class="td_a"><input type="text" name="" value="341" class="input_list" /></td>
+					<td class="td_a"><input type="text" name="" class="input_list" /> <a class="status2" title="" href="">1106071447541/564</a></td>
+					<td class="td_a"><a class="status2" title="" href="">20/06/2011</a></td>
+					<td class="td_a"><a class="status2" title="" href="">Brindes Brasil</a></td>
+					<td class="td_a"><a href="" title="Editar">Editar</a> | <a href="" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';" class="row_a">
+					<td class="td_a"><input type="checkbox" name="" /></td>
+					<td class="td_a"><a class="status1" title="" href="">3</a></td>
+					<td class="td_a"><input type="text" name="" value="341" class="input_list" /></td>
+					<td class="td_a"><input type="text" name="" class="input_list" /> <a class="status1" title="" href="">1106071447541/564</a></td>
+					<td class="td_a"><a class="status1" title="" href="">20/06/2011</a></td>
+					<td class="td_a"><a class="status1" title="" href="">Brindes Brasil</a></td>
+					<td class="td_a"><a href="" title="Editar">Editar</a> | <a href="" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+					<td class="td_a"><input type="checkbox" name="" /></td>
+					<td class="td_a"><a class="status2" title="" href="">6193</a></td>
+					<td class="td_a"><input type="text" name="" value="341" class="input_list" /></td>
+					<td class="td_a"><input type="text" name="" class="input_list" /> <a class="status2" title="" href="">1106071447541/564</a></td>
+					<td class="td_a"><a class="status2" title="" href="">20/06/2011</a></td>
+					<td class="td_a"><a class="status2" title="" href="">Brindes Brasil</a></td>
+					<td class="td_a"><a href="" title="Editar">Editar</a> | <a href="" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';" class="row_a">
+					<td class="td_a"><input type="checkbox" name="" /></td>
+					<td class="td_a"><a class="status0" title="" href="">3</a></td>
+					<td class="td_a"><input type="text" name="" value="341" class="input_list" /></td>
+					<td class="td_a"><input type="text" name="" class="input_list" /> <a class="status0" title="" href="">1106071447541/564</a></td>
+					<td class="td_a"><a class="status0" title="" href="">20/06/2011</a></td>
+					<td class="td_a"><a class="status0" title="" href="">Brindes Brasil</a></td>
+					<td class="td_a"><a href="" title="Editar">Editar</a> | <a href="" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+					<td class="td_a"><input type="checkbox" name="" /></td>
+					<td class="td_a"><a class="status2" title="" href="">6193</a></td>
+					<td class="td_a"><input type="text" name="" value="341" class="input_list" /></td>
+					<td class="td_a"><input type="text" name="" class="input_list" /> <a class="status2" title="" href="">1106071447541/564</a></td>
+					<td class="td_a"><a class="status2" title="" href="">20/06/2011</a></td>
+					<td class="td_a"><a class="status2" title="" href="">Brindes Brasil</a></td>
+					<td class="td_a"><a href="" title="Editar">Editar</a> | <a href="" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';" class="row_a">
+					<td class="td_a"><input type="checkbox" name="" /></td>
+					<td class="td_a"><a class="status0" title="" href="">3</a></td>
+					<td class="td_a"><input type="text" name="" value="341" class="input_list" /></td>
+					<td class="td_a"><input type="text" name="" class="input_list" /> <a class="status0" title="" href="">1106071447541/564</a></td>
+					<td class="td_a"><a class="status0" title="" href="">20/06/2011</a></td>
+					<td class="td_a"><a class="status0" title="" href="">Brindes Brasil</a></td>
+					<td class="td_a"><a href="" title="Editar">Editar</a> | <a href="" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+					<td class="td_a"><input type="checkbox" name="" /></td>
+					<td class="td_a"><a class="status2" title="" href="">6193</a></td>
+					<td class="td_a"><input type="text" name="" value="341" class="input_list" /></td>
+					<td class="td_a"><input type="text" name="" class="input_list" /> <a class="status2" title="" href="">1106071447541/564</a></td>
+					<td class="td_a"><a class="status2" title="" href="">20/06/2011</a></td>
+					<td class="td_a"><a class="status2" title="" href="">Brindes Brasil</a></td>
+					<td class="td_a"><a href="" title="Editar">Editar</a> | <a href="" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';" class="row_a">
+					<td class="td_a"><input type="checkbox" name="" /></td>
+					<td class="td_a"><a class="status0" title="" href="">3</a></td>
+					<td class="td_a"><input type="text" name="" value="341" class="input_list" /></td>
+					<td class="td_a"><input type="text" name="" class="input_list" /> <a class="status0" title="" href="">1106071447541/564</a></td>
+					<td class="td_a"><a class="status0" title="" href="">20/06/2011</a></td>
+					<td class="td_a"><a class="status0" title="" href="">Brindes Brasil</a></td>
+					<td class="td_a"><a href="" title="Editar">Editar</a> | <a href="" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+					<td class="td_a"><input type="checkbox" name="" /></td>
+					<td class="td_a"><a class="status2" title="" href="">6193</a></td>
+					<td class="td_a"><input type="text" name="" value="341" class="input_list" /></td>
+					<td class="td_a"><input type="text" name="" class="input_list" /> <a class="status2" title="" href="">1106071447541/564</a></td>
+					<td class="td_a"><a class="status2" title="" href="">20/06/2011</a></td>
+					<td class="td_a"><a class="status2" title="" href="">Brindes Brasil</a></td>
+					<td class="td_a"><a href="" title="Editar">Editar</a> | <a href="" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';" class="row_a">
+					<td class="td_a"><input type="checkbox" name="" /></td>
+					<td class="td_a"><a class="status2" title="" href="">1</a></td>
+					<td class="td_a"><input type="text" name="" value="341" class="input_list" /></td>
+					<td class="td_a"><input type="text" name="" class="input_list" /> <a class="status2" title="" href="">1106071447541/564</a></td>
+					<td class="td_a"><a class="status2" title="" href="">20/06/2011</a></td>
+					<td class="td_a"><a class="status2" title="" href="">Brindes Brasil</a></td>
+					<td class="td_a"><a href="" title="Editar">Editar</a> | <a href="" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+					<td class="td_a"><input type="checkbox" name="" /></td>
+					<td class="td_a"><a class="status2" title="" href="">2</a></td>
+					<td class="td_a"><input type="text" name="" value="341" class="input_list" /></td>
+					<td class="td_a"><input type="text" name="" class="input_list" /> <a class="status2" title="" href="">1106071447541/564</a></td>
+					<td class="td_a"><a class="status2" title="" href="">20/06/2011</a></td>
+					<td class="td_a"><a class="status2" title="" href="">Brindes Brasil</a></td>
+					<td class="td_a"><a href="" title="Editar">Editar</a> | <a href="" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';" class="row_a">
+					<td class="td_a"><input type="checkbox" name="" /></td>
+					<td class="td_a"><a class="status1" title="" href="">3</a></td>
+					<td class="td_a"><input type="text" name="" value="341" class="input_list" /></td>
+					<td class="td_a"><input type="text" name="" class="input_list" /> <a class="status1" title="" href="">1106071447541/564</a></td>
+					<td class="td_a"><a class="status1" title="" href="">20/06/2011</a></td>
+					<td class="td_a"><a class="status1" title="" href="">Brindes Brasil</a></td>
+					<td class="td_a"><a href="" title="Editar">Editar</a> | <a href="" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+					<td class="td_a"><input type="checkbox" name="" /></td>
+					<td class="td_a"><a class="status2" title="" href="">6193</a></td>
+					<td class="td_a"><input type="text" name="" value="341" class="input_list" /></td>
+					<td class="td_a"><input type="text" name="" class="input_list" /> <a class="status2" title="" href="">1106071447541/564</a></td>
+					<td class="td_a"><a class="status2" title="" href="">20/06/2011</a></td>
+					<td class="td_a"><a class="status2" title="" href="">Brindes Brasil</a></td>
+					<td class="td_a"><a href="" title="Editar">Editar</a> | <a href="" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';" class="row_a">
+					<td class="td_a"><input type="checkbox" name="" /></td>
+					<td class="td_a"><a class="status0" title="" href="">3</a></td>
+					<td class="td_a"><input type="text" name="" value="341" class="input_list" /></td>
+					<td class="td_a"><input type="text" name="" class="input_list" /> <a class="status0" title="" href="">1106071447541/564</a></td>
+					<td class="td_a"><a class="status0" title="" href="">20/06/2011</a></td>
+					<td class="td_a"><a class="status0" title="" href="">Brindes Brasil</a></td>
+					<td class="td_a"><a href="" title="Editar">Editar</a> | <a href="" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+			</table>
+
+			<div style="padding-top: 15px;">
+				<span style="font-weight: bold;">Ação <a href="#x" onMouseover="ddrivetip('Selecione os itens da listagem para aplicar as ações')"; onMouseout="hideddrivetip()">?</a></span> &nbsp;
+				<select name="" style="width: 25%;">
+					<option value="">Ordenar registros</option>
+					<option value="">Excluir selecionados</option>
+				</select> &nbsp;
+				<input type="submit" value="Definir" class="ipt_butt" style="width: 85px;" />
+			</div>
+
+			<div class="line" style="margin-bottom: 0px;">&nbsp;</div>
+
+            <div class="clear" style="line-height: 22px; font-size: 11px;"><br />
+                legenda dos status:<br />
+                <span style="color:#ff0000; font-weight: bold;"> Cancelado</span> &nbsp;&nbsp;
+                <span style="color:#444444; font-weight: bold;"> Concluído</span> &nbsp;&nbsp;
+                <span style="color:#ff9900; font-weight: bold;"> Novo</span> &nbsp;&nbsp;
+                <span style="color:#6666ff; font-weight: bold;"> Em andamento</span> &nbsp;&nbsp;
+                <span style="color:#339900; font-weight: bold;"> Enviado</span> &nbsp;&nbsp;
+                <span style="color:#cc00ff; font-weight: bold;"> Orçamento</span>
+            </div>
+
+		</div>
+
+	</div>
+
+	<div id="left-sidebar">
+
+		<div class="box_side">
+			<p class="box_side_title">WIREFRAME SIM 2012</p>
+			<div class="box_side_cont">
+				<ul>
+					<li><a href="listagem_4fotos.html" title="Listagem com 4 fotos">Listagem com 4 fotos</a></li>
+					<li><a href="listagem_5fotos.html" title="Listagem com 5 fotos">Listagem com 5 fotos</a></li>
+					<li><a href="listagem_checkbox.html" title="Listagem com Checkbox">Listagem com Checkbox</a></li>
+					<li><a href="listagem_icones.html" title="Listagem com Ícones">Listagem com Ícones</a></li>
+					<li><a href="listagem_videos.html" title="Listagem com Vídeos">Listagem com Vídeos</a></li>
+					<li><a href="orcamentos_cadastra2.html" title="Criação de Orçamentos">Criação de Orçamentos</a></li>
+					<li><a href="orcamentos_edita.html" title="Edição do Orçamentos">Edição do Orçamentos</a></li>
+					<li><a href="orcamentos_index.html" title="Listagem de Orçamentos">Listagem de Orçamentos</a></li>
+					<li><a href="orcamentos_interacoes.html" title="Interações">Interações</a></li>
+					<li><a href="orcamentos_pedidos_gerar.html" title="Gerar Pedido">Gerar Pedido</a></li>
+					<li><a href="orcamentos_produtos_incluir.html" title="Incluir Produtos">Incluir Produtos</a></li>
+					<li><a href="gerenciador_de_imagens.html" title="Gerenciador de Imagens">Gerenciador de Imagens</a></li>
+				</ul>
+			</div>
+		</div>
+
+        <div class="box_side">
+			<p class="box_side_title">+ TASK #1235</p>
+			<div class="box_side_cont">
+				<ul class="ul_txt">
+					<li><b>Conta:</b> <span style="color: #009999;">AWSoft!</span></li>
+					<li><b>Projeto:</b> <a href="#x" title="Desenvolvimento de Extensões">Desenvolvimento</a></li>
+					<li><b>Criada por:</b> <span style="color: #009999;">Ará</span></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="box_side">
+			<p class="box_side_title">BUSCAR PRODUTO</p>
+			<div class="box_side_cont">
+				<form>
+					<label>digite o nome do produto</label>
+					<input type="text" name="" class="ipt_text" style="width: 129px;" />
+					<input type="submit" value="ok" class="ipt_butt" style="width: 40px;" />
+				</form>
+
+				<form style="margin-top: 10px;">
+					<select style="width: 195px;">
+						<option value="all" >Listar todos os registros</option>
+						<option value="1" selected>Listar apenas ativos</option>
+						<option value="0" >Listar apenas desativados</option>
+					</select>
+				</form>
+			</div>
+		</div>
+
+		<div class="box_side">
+			<p class="box_side_title">MENU [Produtos]</p>
+			<div class="box_side_cont">
+				<ul>
+					<li><a href="javascript:void(-1);">Produtos</a></li>
+					<li><a href="javascript:void(-1);">Novo Produto</a></li>
+					<li><a href="javascript:void(-1);">Grupos</a></li>
+					<li><a href="javascript:void(-1);">Novo Grupo</a></li>
+					<li><a href="javascript:void(-1);">Categorias</a></li>
+					<li><a href="javascript:void(-1);">Nova Categoria</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="box_side">
+			<p class="box_side_title">INFORMAÇÕES <a href="#x" onMouseover="ddrivetip('informações do produto <strong>Caneta</strong>')"; onMouseout="hideddrivetip()">?</a></p>
+			<div class="box_side_cont">
+			<ul class="ul_txt">
+				<li>Identificação: <b>229</b></li>
+				<li>Status: <b class="status0">Desativado</b></li>
+				<li>PageViews: <b>200</b></li>
+			</ul>
+			</div>
+		</div>
+
+		<div class="message_side">
+			<p><b>AWBrindes!</b></p><p>J&aacute; viu o que h&aacute; de novo na &uacute;ltima vers&atilde;o do AWBrindes? Saiba mais em <a href="http://brind.es/9l" target="_blank" title="brind.es/9l">brind.es/9l</a></p>
+		</div>
+	</div>
+
+</div>
+
+<div class="clear">&nbsp;</div>
+<div id="footer">
+	<p>2005-2011 &copy; SIM V 0.06 - Desenvolvimento <a href="http://www.awsoft.com.br" target="_blank" title="AWSoft!">AWSoft!</a></p>
+</div>
+
+</body>
+</html>

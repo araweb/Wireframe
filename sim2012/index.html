@@ -1,0 +1,596 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+<head>
+<title>SIM</title>
+<meta name="date" content="17/6/2006 16:14" />
+<meta name="author" content="AWSoft!" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	
+<link type="text/css" rel="stylesheet" href="style2012.css" />
+<link type="text/css" rel="stylesheet" href="js/lightbox/lightbox.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="js/tabber/tabber.css" />
+<script type="text/javascript" src="js/tabber/tabber.js"></script>
+<script type="text/javascript" src="js/lightbox/prototype.js"></script>
+<script type="text/javascript" src="js/lightbox/scriptaculous.js?load=effects"></script>
+<script type="text/javascript" src="js/lightbox/lightbox.js"></script>
+<script type="text/javascript" src="js/tooltip/tooltip.js"></script>
+<script type="text/javascript"> document.write('<style type="text/css">.tabber{display:none;}<\/style>'); </script>
+
+    <script src="js/JSCal/src/js/jscal2.js"></script>
+    <script src="js/JSCal/src/js/lang/pt.js"></script>
+    <link rel="stylesheet" type="text/css" href="js/JSCal/src/css/jscal2.css" />
+    <link rel="stylesheet" type="text/css" href="js/JSCal/src/css/border-radius.css" />
+    <link rel="stylesheet" type="text/css" href="js/JSCal/src/css/win2k/win2k.css" />
+
+<style>
+* html * { color: expression( (function(who){ if(!who.MXPC){
+ who.MXPC = '1';
+ if(who.nodeName != 'A'){
+  who.onmouseenter=function(){ who.className += ' hover'};
+  who.onmouseleave=function(){ who.className = who.className.replace(' hover','')}; }
+ (who==who.parentNode.firstChild) ? who.className += ' first-child' : '' ;
+} } )(this) , ' auto') }
+</style>
+
+</head>
+
+<body>
+
+<div id="page-wrap">
+
+	<div class="bx-update">Lorem ipsum <a href="#x" title="">dolor sit</a></div>
+
+	<div class="header-bar">
+		<div class="left">
+			<ul class="menu-top">
+				<li class="welcome-user">olá <i>Admin!</i></li>
+			</ul>
+		</div>
+		<div class="right">
+			<ul class="menu-top">
+				<li><a href="" title="Extensões" class="link-plugins">Extensões</a></li>
+				<li><a href="" title="Usuários" class="link-user">Usuários</a></li>
+				<li><a href="" title="Minha Conta" class="link-account">Minha Conta</a></li>
+				<li><a href="" title="Meu Plano" class="link-plans">Meu Plano</a></li>
+				<li><a href="" title="Sair" class="link-logout">Sair</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="header">
+		<div id="top">
+			<div class="left logo"><a href="index.html" title="AWSoft!"><img src="images/logo_sim.jpg" border="0" alt="" style="height: 65px;" /></a><span><a href="logo_sim.html" title="Alterar logo do SIM">Alterar logo do SIM</a></span></div>
+
+			<div class="right filters-top-right">
+		        <form name="" method="" action="" class="left" style="padding-right: 15px;">
+					<select name="status" id="status" onchange="javascript:changeStatus();" >
+		                <option value="all" selected>Listar todos os ...</option>
+		                <option value="1" >Listar apenas os ... ativos</option>
+		                <option value="0" >Listar apenas os ... desativados</option>
+					</select>
+		        </form>
+				<form name="formq" method="post" action="banners.php" onsubmit="return search('Buscar Banner...');" class="left">
+					<input name="q" id="q" type="text" value="Buscar Banner..." onfocus="if(this.value==this.defaultValue)this.value=''" onblur="if(this.value=='')this.value=this.defaultValue" class="ipt_text" style="width: 129px;" />
+	                <input type="submit" name="submitq" value="Ok" class="ipt_butt" />
+				</form>
+			</div>
+		</div>
+
+		<ul class="menu-hv">
+		 <li><a href="index.html" title="Home">Home</a></li>
+		 <li><a href="javascript:void(-1);">Produtos</a>
+		  <ul>
+		   <li><a href="javascript:void(-1);">Categorias</a></li>
+		   <li><a href="javascript:void(-1);">Grupos</a></li>
+		  </ul>
+		 </li>
+		 <li><a href="javascript:void(-1);">Pedidos</a>
+		 <li><a href="javascript:void(-1);">Ferramentas</a>
+		  <ul>
+		   <li><a href="javascript:void(-1);">Links</a></li>
+		   <li><a href="javascript:void(-1);">Banners</a></li>
+		   <li><a href="javascript:void(-1);">Configurações</a></li>
+		  </ul>
+		 </li>
+		 <li><a href="javascript:void(-1);">Usuários</a></li>
+		 <li><a href="javascript:void(-1);">Extensões</a></li>
+		</ul>
+	</div>
+
+	<div id="main-content">
+		<div id="main">
+			<div id="crumbs">Você está em: <a href="home" title="">Produtos</a> &gt; <a href="javascript:void(-1);">Categorias</a></div>
+
+			<a href="javascript:void(-1);"><img src="images/links.png" class="icon_title" /></a>
+			<h1>Listagem de Dados</h1>
+
+			<div class="left">
+				<p style="padding-bottom: 10px;">Página <b>1</b> de <b>15</b>, mostrando <b>15</b> de <b>215</b> registros cadastrados</p>
+				<a href="javascript:void(-1);" title="Novo registro">Novo registro</a> | <a href="javascript:void(-1);" title="Listagem original">Listagem original</a> | <a href="javascript:void(-1);" title="Listagem clássica">Listagem clássica</a>
+			</div>
+			<div class="pg_right">
+				Primeira | Anterior | <a href="javascript:void(-1);">Próxima</a> | <a href="javascript:void(-1);">Última</a>
+				<div class="pages">
+					<span class="pages_crr">01</span>&nbsp;
+					<a title="Página 02" href="javascript:void(-1);">02</a>&nbsp;
+					<a title="Página 03" href="javascript:void(-1);">03</a>&nbsp;
+				</div>
+			</div>
+			<div class="clear"></div>
+
+			<table width="100%" cellpadding="0" cellspacing="0" class="table_ab">
+				<tr>
+					<td class="tha">ID <a href="#x" title="Ordem Crescente"><img src="images/b_top_b.gif" alt="Ordem Crescente" border="0" /></a> <a href="#x" title="Ordem Decrescente"><img src="images/b_bottom_b.gif" alt="Ordem Decrescente" border="0" /></a></td>
+					<td class="tha">Banco</td>
+					<td class="tha">Número do Documento <a href="#x" title="Ordem Crescente"><img src="images/b_top_b.gif" alt="Ordem Crescente" border="0" /></a> <a href="#x" title="Ordem Decrescente"><img src="images/b_bottom_b.gif" alt="Ordem Decrescente" border="0" /></a></td>
+					<td class="tha">Vencimento</td>
+					<td class="tha">Valor</td>
+					<td class="tha">Sacado</td>
+					<td class="tha">Ações</td>
+				</tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';" class="row_a">
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">1</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">Itaú</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">1106071447541/564</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">20/06/2011</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">R$ 69,00</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">Brindes Brasil</a></td>
+					<td class="td_a" style="width: 90px;"><a href="javascript:void(-1);" title="Editar">Editar</a> | <a href="javascript:void(-1);" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">2</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">Itaú</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">1106071447541/564</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">20/06/2011</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">R$ 69,00</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">Brindes Brasil</a></td>
+					<td class="td_a" style="width: 90px;"><a href="javascript:void(-1);" title="Editar">Editar</a> | <a href="javascript:void(-1);" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';" class="row_a">
+					<td class="td_a"><a class="status1" title="" href="javascript:void(-1);">3</a></td>
+					<td class="td_a"><a class="status1" title="" href="javascript:void(-1);">Itaú</a></td>
+					<td class="td_a"><a class="status1" title="" href="javascript:void(-1);">1106071447541/564</a></td>
+					<td class="td_a"><a class="status1" title="" href="javascript:void(-1);">20/06/2011</a></td>
+					<td class="td_a"><a class="status1" title="" href="javascript:void(-1);">R$ 69,00</a></td>
+					<td class="td_a"><a class="status1" title="" href="javascript:void(-1);">Brindes Brasil</a></td>
+					<td class="td_a" style="width: 90px;"><a href="javascript:void(-1);" title="Editar">Editar</a> | <a href="javascript:void(-1);" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">6193</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">Itaú</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">1106071447541/564</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">20/06/2011</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">R$ 69,00</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">Brindes Brasil</a></td>
+					<td class="td_a" style="width: 90px;"><a href="javascript:void(-1);" title="Editar">Editar</a> | <a href="javascript:void(-1);" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';" class="row_a">
+					<td class="td_a"><a class="status0" title="" href="javascript:void(-1);">3</a></td>
+					<td class="td_a"><a class="status0" title="" href="javascript:void(-1);">Itaú</a></td>
+					<td class="td_a"><a class="status0" title="" href="javascript:void(-1);">1106071447541/564</a></td>
+					<td class="td_a"><a class="status0" title="" href="javascript:void(-1);">20/06/2011</a></td>
+					<td class="td_a"><a class="status0" title="" href="javascript:void(-1);">R$ 69,00</a></td>
+					<td class="td_a"><a class="status0" title="" href="javascript:void(-1);">Brindes Brasil</a></td>
+					<td class="td_a" style="width: 90px;"><a href="javascript:void(-1);" title="Editar">Editar</a> | <a href="javascript:void(-1);" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">6193</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">Itaú</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">1106071447541/564</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">20/06/2011</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">R$ 69,00</a></td>
+					<td class="td_a"><a class="status2" title="" href="javascript:void(-1);">Brindes Brasil</a></td>
+					<td class="td_a" style="width: 90px;"><a href="javascript:void(-1);" title="Editar">Editar</a> | <a href="javascript:void(-1);" title="Excluir" style="color: #F00;">Excluir</a></td>
+	            </tr>
+			</table>
+
+            <div class="clear" style="line-height: 22px; font-size: 11px;"><br />
+                legenda dos status:<br />
+                <span style="color:#ff0000; font-weight: bold;"> Cancelado</span> &nbsp;&nbsp;
+                <span style="color:#444444; font-weight: bold;"> Concluído</span> &nbsp;&nbsp;
+                <span style="color:#ff9900; font-weight: bold;"> Novo</span> &nbsp;&nbsp;
+                <span style="color:#6666ff; font-weight: bold;"> Em andamento</span> &nbsp;&nbsp;
+                <span style="color:#339900; font-weight: bold;"> Enviado</span> &nbsp;&nbsp;
+                <span style="color:#cc00ff; font-weight: bold;"> Orçamento</span>
+            </div>
+
+			<br /><br /><h1>Formulários</h1>
+
+			<div class="adg">
+				<div class="left">
+					<p><a href="javascript:void(-1);" title="">Ver foto deste produto</a> | <a href="javascript:void(-1);" title="">Gerenciar imagens</a> | <a href="javascript:void(-1);" title="">Gerenciar custos</a></p>
+					<p><b style="color:#ff9900;">Produto marcado como destaque!</b></p>
+				</div>
+
+				<div class="right">
+					<p><a href="javascript:void(-1);" style="color: #F00;" title="Excluir este produto">Excluir este produto</a></p>
+				</div>
+				<div class="clear"></div>
+			</div>
+
+			<form>
+				<div class="box_form_full">
+					<label>Nome do Produto <a href="javascript:void(-1);" onMouseover="ddrivetip('Lorem ipsum dolor sit amet, consectetur')"; onMouseout="hideddrivetip()">?</a></label><br />
+					<input type="text" name="" class="ipt_text" />
+				</div>
+				<div class="box_form">
+					<label>Upload de arquivo <a href="#x" onMouseover="ddrivetip('Lorem ipsum dolor sit amet, consectetur')"; onMouseout="hideddrivetip()">?</a></label><br />
+					<input type="file" name="" size="27" class="ipt_file" />
+				</div>
+				<div class="box_form">
+					<label>Campo Select:</label><br />
+					<select name="">
+                        <option value="5" selected>Bloco de Anotações</option>
+                        <option value="4" >Bonés</option>
+                        <option value="6" >Calendários</option>
+                        <option value="1" >Chaveiros</option>
+                        <option value="9" >Porta Retrato</option>
+                        <option value="3" >Squeezes</option>
+                        <option value="14">Super Ofertas</option>
+						<option value="10" >Viseiras</option>
+					</select>
+				</div>
+				<div class="box_form">
+					<label>Calendário:</label><br />
+					<input type="text" name="dataPublicacao" id="dataPublicacao" maxlength="10" readonly class="ipt_text" style="width: 70%;" /> &nbsp;
+					<a href="javascript:void(-1);"><img width="16" height="16" alt="Utilize o Calendário!" title="Utilize o Calendário!" border="0" id="trigger_dataPublicacao" src="js/JSCal/src/css/jscalendar.gif" /></a>
+
+					<script type="text/javascript">//<![CDATA[
+						Calendar.setup({
+							inputField : "dataPublicacao",
+                            trigger    : "trigger_dataPublicacao",
+                            onSelect   : function() { this.hide() },
+                            showTime   : 24,
+                            dateFormat : "%d/%m/%Y %I:%M"
+                        });
+						//]]>
+					</script>
+				</div>
+				<div class="box_form">
+					<label>Valor unitário</label> ( utilize o formato 1.00 )<br />
+					<input type="text" name="" class="ipt_text" />
+				</div>
+
+				<div class="line">&nbsp;</div>
+
+				<div class="box_form">
+					<label>Campo Select:</label><br />
+					<select name="">
+                        <option value="5" selected>Bloco de Anotações</option>
+                        <option value="4" >Bonés</option>
+                        <option value="6" >Calendários</option>
+                        <option value="1" >Chaveiros</option>
+                        <option value="9" >Porta Retrato</option>
+                        <option value="3" >Squeezes</option>
+                        <option value="14">Super Ofertas</option>
+						<option value="10" >Viseiras</option>
+					</select>
+				</div>
+				<div class="box_form">
+					<label>Botões rádio:</label><br />
+					<input type="radio" name="" id="ipt_rb" /> Primeira opção &nbsp; &nbsp; &nbsp;
+					<input type="radio" name="" id="ipt_rb" /> Segunda opção &nbsp; &nbsp; &nbsp;
+					<input type="radio" name="" id="ipt_rb" /> Terceira opção
+				</div>
+				<div class="box_form">
+					<label><span style="padding-right: 12%;">Campo1:</span> Campo2:</label><br />
+					<input type="text" name="" class="ipt_text" style="width: 15%;" />
+					<input type="text" name="" class="ipt_text" style="width: 70%;" />
+				</div>
+				<div class="box_form">
+					<label>Campo input text:</label><br />
+					<input type="text" name="" class="ipt_text" />
+				</div>
+				<div class="box_form_full">
+					<label>Bloco de notas <a href="#x" onMouseover="ddrivetip('Visivel somente pela administração!')"; onMouseout="hideddrivetip()">?</a></label><br />
+					<textarea name=""></textarea>
+				</div>
+				<div class="box_form_full">
+					<label>Campos checkbox</label><br />
+					<input type="checkbox" name="" id="ipt_rb" /> Primeira opção &nbsp; &nbsp; &nbsp
+					<input type="checkbox" name="" id="ipt_rb" /> Segunda opção &nbsp; &nbsp; &nbsp
+					<input type="checkbox" name="" id="ipt_rb" /> Terceira opção
+				</div>
+				<div class="box_form_full">
+					<input type="submit" value="Enviar" class="ipt_butt" style="width: 100px;" />
+				</div>
+			</form>
+
+			<div class="clear"></div>
+			<h1>Mensagens</h1>
+				<div class="bottom">
+					<p class="message error">Error: Você não tem permissão para editar os dados deste módulo!</p>
+					<p class="message success">Success: DADOS CADASTRADOS COM SUCESSO!</p>
+					<p class="message warning">Warning: Instalação do módulo "Gerenciador de Imagens" não encontrado! Não será possível editar as imagens!</p>
+				</div>
+
+			<div class="clear">&nbsp;</div>
+			<h1>Configurações</h1>
+
+			<div class="tabber">
+				<div class="tabbertab">
+					<h2>Tab 1</h2>
+					<p>Tab 1 content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<p>Tab 1 content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<p>Tab 1 content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<p>Tab 1 content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<p>Tab 1 content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+				</div>
+				<div class="tabbertab">
+					<h2>Tab 2</h2>
+					<p>Tab 2 content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<p>Tab 2 content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<p>Tab 2 content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<p>Tab 2 content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<p>Tab 2 content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+				</div>
+				<div class="tabbertab">
+					<h2>Tab 3</h2>
+					<p>Tab 3 content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<p>Tab 3 content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<p>Tab 3 content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<p>Tab 3 content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<p>Tab 3 content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+				</div>
+			</div>
+
+			<div class="clear"><br />&nbsp;</div>
+			<h1>Catálogo de Imagens</h1>
+
+			<div class="outer out_five">
+				<div class="middle">
+				<div class="inner">
+					<p class="p_inner" style="background-image: url(images/produto01.jpg);"><a rel="lightbox[roadtrip]" href="images/produto01.jpg" title="img"><img src="images/space.gif" alt="img" /></a></p>
+				</div>
+				</div>
+				<div class="box_txt_outer">
+					<p class="box_outer_acoes"><a href="javascript:void(-1);">editar</a> | <a href="javascript:void(-1);" style="color: #F00;">excluir</a></p>
+					Pen Drive Personalizado Pen Drive Personalizado<br />
+					em: <a href="javascript:void(-1);">Novidades</a>
+				</div>
+			</div>
+			<div class="outer out_five">
+				<div class="middle">
+				<div class="inner">
+					<p class="p_inner" style="background-image: url(images/produto02.jpg);"><a rel="lightbox[roadtrip]" href="images/produto02.jpg" title="img"><img src="images/space.gif" alt="img" /></a></p>
+				</div>
+				</div>
+				<div class="box_txt_outer">
+					<p class="box_outer_acoes"><a href="javascript:void(-1);">editar</a> | <a href="javascript:void(-1);" style="color: #F00;">excluir</a></p>
+					Pente com Espelho<br />
+					em: <a href="javascript:void(-1);">Pentes</a>
+				</div>
+			</div>
+			<div class="outer out_five">
+				<div class="middle">
+				<div class="inner">
+					<p class="p_inner" style="background-image: url(images/produto03.jpg);"><a rel="lightbox[roadtrip]" href="images/produto03.jpg" title="img"><img src="images/space.gif" alt="img" /></a></p>
+				</div>
+				</div>
+				<div class="box_txt_outer">
+					<p class="box_outer_acoes"><a href="javascript:void(-1);">editar</a> | <a href="javascript:void(-1);" style="color: #F00;">excluir</a></p>
+					Pen Drive Personalizado Pen Drive Personalizado<br />
+					em: <a href="javascript:void(-1);">Novidades</a>
+				</div>
+			</div>
+			<div class="outer out_five">
+				<div class="middle">
+				<div class="inner">
+					<p class="p_inner" style="background-image: url(images/produto04.jpg);"><a rel="lightbox[roadtrip]" href="images/produto04.jpg" title="img"><img src="images/space.gif" alt="img" /></a></p>
+				</div>
+				</div>
+				<div class="box_txt_outer">
+					<p class="box_outer_acoes"><a href="javascript:void(-1);">editar</a> | <a href="javascript:void(-1);" style="color: #F00;">excluir</a></p>
+					Pente com Espelho<br />
+					em: <a href="javascript:void(-1);">Pentes</a>
+				</div>
+			</div>
+			<div class="outer out_five">
+				<div class="middle">
+				<div class="inner">
+					<p class="p_inner" style="background-image: url(images/produto05.jpg);"><a rel="lightbox[roadtrip]" href="images/produto05.jpg" title="img"><img src="images/space.gif" alt="img" /></a></p>
+				</div>
+				</div>
+				<div class="box_txt_outer">
+					<p class="box_outer_acoes"><a href="javascript:void(-1);">editar</a> | <a href="javascript:void(-1);" style="color: #F00;">excluir</a></p>
+					Pen Drive Personalizado Pen Drive Personalizado<br />
+					em: <a href="javascript:void(-1);">Novidades</a>
+				</div>
+			</div>
+			<div class="outer out_five">
+				<div class="middle">
+				<div class="inner">
+					<p class="p_inner" style="background-image: url(images/produto01.jpg);"><a rel="lightbox[roadtrip]" href="images/produto01.jpg" title="img"><img src="images/space.gif" alt="img" /></a></p>
+				</div>
+				</div>
+				<div class="box_txt_outer">
+					<p class="box_outer_acoes"><a href="javascript:void(-1);">editar</a> | <a href="javascript:void(-1);" style="color: #F00;">excluir</a></p>
+					Pen Drive Personalizado Pen Drive Personalizado<br />
+					em: <a href="javascript:void(-1);">Novidades</a>
+				</div>
+			</div>
+			<div class="outer out_five">
+				<div class="middle">
+				<div class="inner">
+					<p class="p_inner" style="background-image: url(images/produto03.jpg);"><a rel="lightbox[roadtrip]" href="images/produto03.jpg" title="img"><img src="images/space.gif" alt="img" /></a></p>
+				</div>
+				</div>
+				<div class="box_txt_outer">
+					<p class="box_outer_acoes"><a href="javascript:void(-1);">editar</a> | <a href="javascript:void(-1);" style="color: #F00;">excluir</a></p>
+					Pente com Espelho<br />
+					em: <a href="javascript:void(-1);">Pentes</a>
+				</div>
+			</div>
+			<div class="outer out_five">
+				<div class="middle">
+				<div class="inner">
+					<p class="p_inner" style="background-image: url(images/produto05.jpg);"><a rel="lightbox[roadtrip]" href="images/produto05.jpg" title="img"><img src="images/space.gif" alt="img" /></a></p>
+				</div>
+				</div>
+				<div class="box_txt_outer">
+					<p class="box_outer_acoes"><a href="javascript:void(-1);">editar</a> | <a href="javascript:void(-1);" style="color: #F00;">excluir</a></p>
+					Pen Drive Personalizado Pen Drive Personalizado<br />
+					em: <a href="javascript:void(-1);">Novidades</a>
+				</div>
+			</div>
+			<div class="outer out_five">
+				<div class="middle">
+				<div class="inner">
+					<p class="p_inner" style="background-image: url(images/produto02.jpg);"><a rel="lightbox[roadtrip]" href="images/produto02.jpg" title="img"><img src="images/space.gif" alt="img" /></a></p>
+				</div>
+				</div>
+				<div class="box_txt_outer">
+					<p class="box_outer_acoes"><a href="javascript:void(-1);">editar</a> | <a href="javascript:void(-1);" style="color: #F00;">excluir</a></p>
+					Pente com Espelho<br />
+					em: <a href="javascript:void(-1);">Pentes</a>
+				</div>
+			</div>
+			<div class="outer out_five">
+				<div class="middle">
+				<div class="inner">
+					<p class="p_inner" style="background-image: url(images/produto04.jpg);"><a rel="lightbox[roadtrip]" href="images/produto04.jpg" title="img"><img src="images/space.gif" alt="img" /></a></p>
+				</div>
+				</div>
+				<div class="box_txt_outer">
+					<p class="box_outer_acoes"><a href="javascript:void(-1);">editar</a> | <a href="javascript:void(-1);" style="color: #F00;">excluir</a></p>
+					Pen Drive Personalizado Pen Drive Personalizado<br />
+					em: <a href="javascript:void(-1);">Novidades</a>
+				</div>
+			</div>
+
+			<div class="clear">&nbsp;</div>
+			<h1>Campo de texto</h1>
+
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><br />
+			<ul class="ul_general">
+				<li>Lorem ipsum dolor sit amet</li>
+				<li>Lorem ipsum dolor sit amet</li>
+				<li>Lorem ipsum dolor sit amet</li>
+			</ul><br />
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+			<div class="clear"><br />&nbsp;</div>
+			<h1>Colunas</h1>
+
+			<div class="box_column2">
+				<h2 class="title_column">Two columns</h2>
+				<p>Two columns</p>
+				<p>Two columns</p>
+			</div>
+			<div class="box_column2 bcf2">
+				<h2 class="title_column">Two columns</h2>
+				<p>Two columns</p>
+				<p>Two columns</p>
+			</div>
+
+			<div class="line">&nbsp;</div>
+
+			<div class="box_column3">
+				<h2 class="title_column">Three columns</h2>
+				<p>Three columns</p>
+				<p>Three columns</p>
+			</div>
+			<div class="box_column3">
+				<h2 class="title_column">Three columns</h2>
+				<p>Three columns</p>
+				<p>Three columns</p>
+			</div>
+			<div class="box_column3 bcf3">
+				<h2 class="title_column">Three columns</h2>
+				<p>Three columns</p>
+				<p>Three columns</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="left-sidebar">	
+
+		<div class="box_side">
+			<p class="box_side_title">WIREFRAME SIM 2012</p>
+			<div class="box_side_cont">
+				<ul>
+					<li><a href="listagem_4fotos.html" title="Listagem com 4 fotos">Listagem com 4 fotos</a></li>
+					<li><a href="listagem_5fotos.html" title="Listagem com 5 fotos">Listagem com 5 fotos</a></li>
+					<li><a href="listagem_checkbox.html" title="Listagem com Checkbox">Listagem com Checkbox</a></li>
+					<li><a href="listagem_icones.html" title="Listagem com Ícones">Listagem com Ícones</a></li>
+					<li><a href="listagem_videos.html" title="Listagem com Vídeos">Listagem com Vídeos</a></li>
+					<li><a href="orcamentos_cadastra2.html" title="Criação de Orçamentos">Criação de Orçamentos</a></li>
+					<li><a href="orcamentos_edita.html" title="Edição do Orçamentos">Edição do Orçamentos</a></li>
+					<li><a href="orcamentos_index.html" title="Listagem de Orçamentos">Listagem de Orçamentos</a></li>
+					<li><a href="orcamentos_interacoes.html" title="Interações">Interações</a></li>
+					<li><a href="orcamentos_pedidos_gerar.html" title="Gerar Pedido">Gerar Pedido</a></li>
+					<li><a href="orcamentos_produtos_incluir.html" title="Incluir Produtos">Incluir Produtos</a></li>
+					<li><a href="gerenciador_de_imagens.html" title="Gerenciador de Imagens">Gerenciador de Imagens</a></li>
+				</ul>
+			</div>
+		</div>
+
+        <div class="box_side">
+			<p class="box_side_title">+ TASK #1235</p>
+			<div class="box_side_cont">
+				<ul class="ul_txt">
+					<li><b>Conta:</b> <span style="color: #009999;">AWSoft!</span></li>
+					<li><b>Projeto:</b> <a href="#x" title="Desenvolvimento de Extensões">Desenvolvimento</a></li>
+					<li><b>Criada por:</b> <span style="color: #009999;">Ará</span></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="box_side">
+			<p class="box_side_title">BUSCAR PRODUTO</p>
+			<div class="box_side_cont">
+				<form>
+					<label>digite o nome do produto</label>
+					<input type="text" name="" class="ipt_text" style="width: 129px;" />
+					<input type="submit" value="ok" class="ipt_butt" style="width: 40px;" />
+				</form>
+
+				<form style="margin-top: 10px;">
+					<select style="width: 195px;">
+						<option value="all" >Listar todos os registros</option>
+						<option value="1" selected>Listar apenas ativos</option>
+						<option value="0" >Listar apenas desativados</option>
+					</select>
+				</form>
+			</div>
+		</div>
+
+		<div class="box_side">
+			<p class="box_side_title">MENU [Produtos]</p>
+			<div class="box_side_cont">
+				<ul>
+					<li><a href="javascript:void(-1);">Produtos</a></li>
+					<li><a href="javascript:void(-1);">Novo Produto</a></li>
+					<li><a href="javascript:void(-1);">Grupos</a></li>
+					<li><a href="javascript:void(-1);">Novo Grupo</a></li>
+					<li><a href="javascript:void(-1);">Categorias</a></li>
+					<li><a href="javascript:void(-1);">Nova Categoria</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="box_side">
+			<p class="box_side_title">INFORMAÇÕES <a href="#x" onMouseover="ddrivetip('informações do produto <strong>Caneta</strong>')"; onMouseout="hideddrivetip()">?</a></p>
+			<div class="box_side_cont">
+			<ul class="ul_txt">
+				<li>Identificação: <b>229</b></li>
+				<li>Status: <b class="status0">Desativado</b></li>
+				<li>PageViews: <b>200</b></li>
+			</ul>
+			</div>
+		</div>
+
+		<div class="message_side">
+			<p><b>CATÁLOGO DE EXTENSÕES</b></p><p style="margin-top: 5px;"><a href="" title=""><img src="images/puzzle.png" alt="" style="float: left; margin: 4px 7px 0 0;" /></a> Quer deixar seu site ainda mais legal e interessante? <br />Então <a href="">clique aqui</a> e divirta-se!</p>
+		</div>
+	</div>
+
+</div>
+
+<div class="clear">&nbsp;</div>
+<div id="footer">
+	<p>2005-2011 &copy; SIM V 0.06 - Desenvolvimento <a href="http://www.awsoft.com.br" target="_blank" title="AWSoft!">AWSoft!</a></p>
+</div>
+
+</body>
+</html>
