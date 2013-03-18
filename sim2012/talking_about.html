@@ -5,9 +5,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width">
 
-	<title>talking abou</title>
+	<title>talking about</title>
 
 	<link rel="stylesheet" href="talking_about.css">
+	<script type="text/javascript" src="js/libjs/lib.js"></script>
 </head>
 <body>
 
@@ -45,6 +46,21 @@
 
 	<div id="main-container">
 
+		<div class="left">
+			<p style="padding-bottom: 10px;">Página <b>1</b> de <b>15</b>, mostrando <b>15</b> de <b>215</b> registros cadastrados</p>
+			<a href="" title="">Listagem original</a> | <a href="" title="">Listagem clássica</a>
+		</div>
+		<div class="pg_right">
+			Primeira | Anterior | <a href="">Próxima</a> | <a href="">Última</a>
+			<div class="pages">
+				<span class="pages_crr">01</span>&nbsp;
+				<a title="Página 02" href="">02</a>&nbsp;
+				<a title="Página 03" href="">03</a>&nbsp;
+			</div>
+		</div>
+
+		<div class="clear">&nbsp;</div>
+
 		<ul class="listing-entries">
 			<li class="clearfix">
 				<div class="thumb"><a href="" title=""><img src="images/thumb_talking_about.jpg" alt="" /></a></div>
@@ -52,8 +68,9 @@
 					<strong><a href="" title="">Estadao</a></strong> @Estadao
 					<p class="text-main">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
 					<p><a href="" title="">Reply</a> &bull; <a href="" title="">Retweet</a> &bull; <a href="" title="">Favorite</a></p>
+					<img src="images/twitter_alt.jpg" alt="Twitter" class="icon-social" />
 					<div class="fav clearfix">
-						<p>Via <b>Twitter</b> em 13/06/2012 às 18:31:42</p>
+						<p>13/06/2012 às 18:31:42</p>
 						<p><a href="">16</a> RETWEETS</p>
 						<p><a href="">4</a> FAVORITOS</p>
 					</div>
@@ -64,26 +81,15 @@
 				<div class="thumb"><a href="" title=""><img src="images/thumb_talking_about.jpg" alt="" /></a></div>
 				<div class="content-about">
 					<strong><a href="" title="">Estadao</a></strong> @Estadao
-					<p class="text-main">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit... <a href="" title="">http://migre.me/</a>. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit... Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit... Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
-					<p><a href="" title="">Reply</a> &bull; <a href="" title="">Retweet</a> &bull; <a href="" title="">Favorite</a></p>
+					<p class="text-main">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
+					<p><a href="javascript:void(-1);" onclick="javascript:showHidden('expand')" title="Expand">Expand</a> &bull; <a href="" title="">Reply</a> &bull; <a href="" title="">Retweet</a> &bull; <a href="" title="">Favorite</a></p>
+					<img src="images/facebook_alt.jpg" alt="Facebook" class="icon-social" />
 					<div class="fav clearfix">
-						<p>Via <b>Twitter</b> em 13/06/2012 às 18:31:42</p>
-						<p><a href="">16</a> RETWEETS</p>
-						<p><a href="">4</a> FAVORITOS</p>
-					</div>
-				</div>
-			</li>
-
-			<li class="clearfix">
-				<div class="thumb"><a href="" title=""><img src="images/thumb_talking_about.jpg" alt="" /></a></div>
-				<div class="content-about">
-					<strong><a href="" title="">Estadao</a></strong> @Estadao
-					<p class="text-main">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit... Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
-					<p><a href="" title="">Reply</a> &bull; <a href="" title="">Retweet</a> &bull; <a href="" title="">Favorite</a></p>
-					<div class="fav clearfix">
-						<p>Via <b>Twitter</b> em 13/06/2012 às 18:31:42</p>
-						<p><a href="">16</a> RETWEETS</p>
-						<p><a href="">4</a> FAVORITOS</p>
+						<p>13/06/2012 às 18:31:42</p>
+					    <span id="expand" class="left" style="display: none;">
+						 <p><a href="">16</a> RETWEETS</p>
+						 <p><a href="">4</a> FAVORITOS</p>
+						</span>
 					</div>
 				</div>
 			</li>

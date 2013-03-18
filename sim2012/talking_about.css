@@ -203,6 +203,13 @@ font-size: 11px;
 font-weight: bold;
 }
 
+.icon-social {
+float: left; 
+margin-right: 8px; 
+position: relative; 
+top: 12px;
+}
+
 #footer-container {
 text-align: center;
 padding-top: 40px;
@@ -213,4 +220,34 @@ color: #999;
 clear: both;
 width: 100%;
 background: url(images/bg_footer.png) top center repeat-x;
+}
+
+.pg_right {
+float: right;
+color: #AAA; 
+text-align: right;
+}
+.pages {
+padding: 10px 0 0 0;
+text-align: right;
+}
+.pages a {
+border: solid 1px #267cb2;
+padding: 3px 3px 3px 3px;
+height: 15px;
+line-height: 25px;
+font-size: 11px;
+}
+.pages a:hover {
+background: #267cb2;
+color: #FFF;
+}
+.pages_crr {
+border: solid 1px #267cb2;
+padding: 3px 3px 3px 3px;
+height: 15px;
+line-height: 25px;
+font-size: 11px;
+color: #FFF;
+background: #267cb2;
 }
