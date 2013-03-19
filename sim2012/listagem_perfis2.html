@@ -24,6 +24,16 @@
   who.onmouseleave=function(){ who.className = who.className.replace(' hover','')}; }
  (who==who.parentNode.firstChild) ? who.className += ' first-child' : '' ;
 } } )(this) , ' auto') }
+
+.logo_perfil {
+position: absolute; 
+left: 1px; 
+bottom: 23px; 
+width: 250px; 
+border-top: solid 1px #DDD; 
+background: #FFF; 
+text-align: center;
+}
 </style>
 
 </head>
@@ -69,12 +79,12 @@
 			<h1>Perfis disponíveis</h1>
 
 			<ul class="list_h">
-				<li>
-					<img src="images/logo_sim.jpg" class="right" style="max-height: 60px; max-width: 190px;" />
+				<li style="position: relative;">
+					<p class="left logo_perfil"><a href="images/logo_sim.jpg" rel="lightbox[roadtrip]" title="Logo do perfil"><img src="images/logo_sim.jpg" style="max-height: 50px; max-width: 200px;" /></a></p>
 					<a href="images/thumb1.jpg" rel="lightbox[roadtrip]" title="7047"><img src="images/thumb1.jpg" alt="7047" class="img_list_h" /></a>
 					<p><strong>0001</strong> &nbsp;[&nbsp; <a href="" title="Preview">Preview</a> &nbsp;|&nbsp; <a href="" onclick="" title="Fixar">Fixar</a> &nbsp;|&nbsp; <a href="" onclick="" title="Duplicar">Duplicar</a> &nbsp;|&nbsp; <a href="" title="Editar">Editar</a> &nbsp;|&nbsp;  <a href="" onclick="" title="Excluir" style="color: #F00;">Excluir</a> &nbsp;]&nbsp; <span style="color:#F60;">Perfil atual</span></p>
 
-					<div class="left" style="padding-top: 15px;">
+					<div class="left" style="padding-top: 20px;">
 						<form>
 							<label>Thumbnail do perfil <a href="#x" onMouseover="ddrivetip('Lorem ipsum dolor sit amet, consectetur')"; onMouseout="hideddrivetip()">?</a></label><br />
 							<input type="file" name="" size="24" class="ipt_file" />
