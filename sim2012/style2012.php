@@ -1166,3 +1166,59 @@ margin-bottom: 30px;
 font-size: 11px;
 color: #777;
 }
+
+#columns {
+-webkit-column-gap: 15px;
+-moz-column-gap: 15px;
+column-gap: 20px;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+}
+
+.columns3 {
+-webkit-column-count: 3;
+-moz-column-count: 3;
+column-count: 3;
+}
+
+.columns4 {
+-webkit-column-count: 4;
+-moz-column-count: 4;
+column-count: 4;
+}
+
+.pin {
+display: inline-block;
+background: #FEFEFE;
+border: 2px solid #FAFAFA;
+box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+margin: 0 2px 15px;
+-webkit-column-break-inside: avoid;
+-moz-column-break-inside: avoid;
+column-break-inside: avoid;
+padding: 5px 10px;
+line-height: 20px;
+}
+
+.columns3 .pin { min-width: 92%; min-width: 97.50%\0/IE8+9; }
+.columns4 .pin { min-width: 89%; min-width: 97.50%\0/IE8+9; }
+
+.pin img {
+width: 100%;
+width: auto\0/IE8+9;
+margin: 5px 0;
+}
+
+.pin ul, ol {
+margin-left: 15px;
+}
+
+.pin h3 {
+font-size: 14px;
+color: #667;
+border-bottom: solid 1px #D9D9D9;
+margin-bottom: 10px;
+padding-bottom: 4px;
+font-family: Arial;
+}
