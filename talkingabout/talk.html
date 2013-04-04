@@ -7,8 +7,9 @@
 
 	<title>talking about</title>
 
-	<link rel="stylesheet" href="talking_about.css">
+	<link rel="stylesheet" href="style.css">
 	<script type="text/javascript" src="js/libjs/lib.js"></script>
+
 </head>
 <body>
 
@@ -30,36 +31,24 @@
 			</div>
 		</div>
 
-		<div id="header-main">
-			<h1 class="title">talking about</h1>
+		<div id="header-main" class="clearfix">
+			<h1 class="title left">talking about</h1>
+
+			<nav id="menu">
+				<ul>
+					<li><a href="index.html" title="HOME">HOME</a></li>
+					<li><a href="servicos.html" title="SERVIÇOS">SERVIÇOS</a></li>
+					<li class="last-link-menu"><a href="#x" title="DASHBOARD">DASHBOARD</a></li>
+				</ul>
+			</nav>
 		</div>
 	</header>
 
-	<nav id="menu" class="clearfix">
-		<ul>
-			<li><a href="#x" title="HOME">HOME</a></li>
-			<li><a href="#x" title="CONTAS">CONTAS</a></li>
-			<li><a href="#x" title="SERVIÇOS">SERVIÇOS</a></li>
-			<li><a href="#x" title="DASHBOARD">DASHBOARD</a></li>
-		</ul>
-	</nav>
-
 	<div id="main-container">
 
-		<div class="left">
-			<p style="padding-bottom: 10px;">Página <b>1</b> de <b>15</b>, mostrando <b>15</b> de <b>215</b> registros cadastrados</p>
-			<a href="" title="">Listagem original</a> | <a href="" title="">Listagem clássica</a>
-		</div>
-		<div class="pg_right">
-			Primeira | Anterior | <a href="">Próxima</a> | <a href="">Última</a>
-			<div class="pages">
-				<span class="pages_crr">01</span>&nbsp;
-				<a title="Página 02" href="">02</a>&nbsp;
-				<a title="Página 03" href="">03</a>&nbsp;
-			</div>
-		</div>
+		<h1 class="title-page">Conversa &raquo; #100</h1>
 
-		<div class="clear">&nbsp;</div>
+		<p><a href="#responder" title="Responder">Responder</a></p><br />
 
 		<ul class="listing-entries">
 			<li class="clearfix">
@@ -80,13 +69,13 @@
 				</div>
 			</li>
 
-			<li class="clearfix">
+			<li class="clearfix bg-rol">
 				<div class="thumb"><a href="https://twitter.com/_INFO" title="INFO Online" target="_blank"><img src="https://si0.twimg.com/profile_images/2726943889/c84ab26458223f663da0f74db5b4675d_normal.jpeg" alt="INFO Online" /></a></div>
 				<div class="content-about">
 					<strong><a href="https://twitter.com/_INFO" title="INFO Online" target="_blank">INFO Online</a></strong> @_INFO
 					<p class="text-main">Amazon inicia venda do Kindle Paperwhite no Brasil <a href="" title="">http://dlvr.it/35xV9t</a></p>
 					<p><a href="javascript:void(-1);" onclick="javascript:showHidden('expand_2')" title="Expandir">Expandir</a> &bull; <a href="" title="Responder">Responder</a> &bull; <a href="" title="Retweetar">Retweetar</a> &bull; <a href="" title="Favorito">Favorito</a></p>
-					<img src="images/twitter_alt.jpg" alt="Twitter" class="icon-social" />
+					<img src="images/facebook_alt.jpg" alt="Facebook" class="icon-social" />
 					<div class="fav clearfix">
 						<p>19/03/2013 às 1:52:00</p>
 						<p><a href="https://twitter.com/_INFO/status/313875616074190848" title="Visualizar post original" style="font-weight: normal;" target="_blank">Link <img src="images/external-link.png" alt="Visualizar post original" /></a></p>
@@ -97,6 +86,48 @@
 					</div>
 				</div>
 			</li>
+
+			<li class="clearfix">
+				<div class="thumb"><img src="images/admin_avatar.jpg" alt="talking about" /></div>
+				<div class="content-about">
+					<strong>Admin</strong>
+					<p class="text-main">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus mollis metus ac venenatis. Donec iaculis risus nec diam pretium tincidunt. In viverra venenatis tellus id mollis. Maecenas luctus, lectus nec malesuada eleifend, dui odio facilisis eros</p>
+					<img src="images/talkingabout_alt.jpg" alt="talking about" class="icon-social" />
+					<div class="fav clearfix">
+						<p>18/03/2013 às 15:05:00</p>
+					</div>
+				</div>
+			</li>
+
+			<li class="clearfix bg-rol">
+				<div class="thumb"><a href="https://twitter.com/_INFO" title="INFO Online" target="_blank"><img src="https://si0.twimg.com/profile_images/2726943889/c84ab26458223f663da0f74db5b4675d_normal.jpeg" alt="INFO Online" /></a></div>
+				<div class="content-about">
+					<strong><a href="https://twitter.com/_INFO" title="INFO Online" target="_blank">INFO Online</a></strong> @_INFO
+					<p class="text-main">Amazon inicia venda do Kindle Paperwhite no Brasil <a href="" title="">http://dlvr.it/35xV9t</a></p>
+					<p><a href="javascript:void(-1);" onclick="javascript:showHidden('expand_3')" title="Expandir">Expandir</a> &bull; <a href="" title="Responder">Responder</a> &bull; <a href="" title="Retweetar">Retweetar</a> &bull; <a href="" title="Favorito">Favorito</a></p>
+					<img src="images/facebook_alt.jpg" alt="Facebook" class="icon-social" />
+					<div class="fav clearfix">
+						<p>19/03/2013 às 1:52:00</p>
+						<p><a href="https://twitter.com/_INFO/status/313875616074190848" title="Visualizar post original" style="font-weight: normal;" target="_blank">Link <img src="images/external-link.png" alt="Visualizar post original" /></a></p>
+					    <span id="expand_3" class="left" style="display: none;">
+						 <p><a href="">10</a> RETWEETS</p>
+						 <p><a href="">5</a> FAVORITOS</p>
+						</span>
+					</div>
+				</div>
+			</li>
+
+			<li class="clearfix" style="background: none;">
+				<div class="content-about">
+					<a name="responder"></a>
+					<h2>Responder</h2><br />
+					<form name="" action="">
+						<textarea name="" class="textarea-talk"></textarea>
+						<input type="submit" class="button" value="Enviar" />
+					</form>
+				</div>
+			</li>
+
 		</ul>
 
 	</div>
