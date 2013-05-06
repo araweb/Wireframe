@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+<head>
+<title>AWSoft! Dev</title>
+<meta name="date" content="17/6/2006 16:14" />
+<meta name="author" content="AWSoft!" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="shortcut icon" href="favicon.ico" />
+<link type="text/css" rel="stylesheet" href="style.css" />
+
+<script type="text/javascript" src="plugins/libjs/lib.js"></script>
+<script type="text/javascript" src="plugins/libjs/tolltip.js"></script>
+
+<script>
+
+function validate() {
+    document.form1.bSubmit.disabled = true;
+}
+
+function search() {
+    q = document.getElementById('q');
+    if (q.value == 'Buscar' || q.value == '') {
+        window.alert('Informe uma busca válida!');
+        q.focus();
+        return false;
+    }
+    document.getElementById('submitq').disabled = true;
+}
+
+</script>
+
+<script type="text/javascript" language="javascript" src="plugins/lytebox/lytebox.js"></script>
+<link type="text/css" media="screen" rel="stylesheet" href="plugins/lytebox/lytebox.css" />
+
+<style>
+.button_select {
+	width: 50px; 
+	padding: 2px; 
+	cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="header_top">
+	<div class="right" style="text-align: right;">
+            olá <b>Ará!</b> &nbsp;|&nbsp;
+            <a href="javascript:void(-1);" title="Usuários">Usuários</a> &nbsp;|&nbsp;
+			<a href="javascript:void(-1);" title="Minha Conta">Minha Conta</a> &nbsp;|&nbsp; 
+            <a href="javascript:void(-1);" title="Sair" style="color:#F00;">Sair</a>
+
+		<form name="formq" method="post" action="/sim-extras/modulos/orcamentos/cadastra2.php" onsubmit="return search();">
+            <select name="tipo" style="padding: 2px; width: 170px;">
+                <option value="a.id">Número do Orçamento</option>
+                <option value="a.nome">Solicitante</option>
+                <option value="a.enderecoEntrega">Endereço de Entrega</option>
+                <option value="a.descricao">Descrição</option>
+                <option value="a.servicosAdicionais">Serviços Adicionais</option>
+                <option value="a.notas">Notas</option>
+            </select>&nbsp;
+			<input name="q" id="q" type="text" style="width: 163px; padding: 2px;" value="Buscar" onfocus="if(this.value==this.defaultValue)this.value=''" onblur="if(this.value=='')this.value=this.defaultValue" />&nbsp;
+			<input type="button" name="submitq" id="submitq" value="ok!" style="width: 35px; padding: 1px;" />
+		</form>
+	</div>
+
+    <h2><img src="images/sim/logo_awsoft.jpg" style="max-height: 90px;" /></h2>
+</div>
+
+<div class="menu">
+    		<ul class="menu-hv">
+                    <li><a href="index.html" target="_self" title="Home">Home</a>
+                        </li>
+                    <li><a href="javascript:void(-1);" target="_self" title="Ferramentas">Ferramentas</a>
+                            <ul>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Links">Links</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Banners">Banners</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Newsletters">Newsletters</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Gerenciador">Gerenciador</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Páginas">Páginas</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Textos">Textos</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Forms">Forms</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Temas">Temas</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Widgets">Widgets</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Logos">Logos</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Configurações">Configurações</a>
+                                </ul>
+                        </li>
+        		</ul></div>
+
+<h1 class="title_pag"><span>Você está em:</span> Orçamentos &raquo; Orçamento #388 &raquo; Gerando Pedido</h1>
+
+<div id="content_main" style="padding-top: 5px;">
+
+<div style="padding: 0 0 10px 0; float: left;">
+ 	  <a href="index.php" title="Todos os Orçamentos">Todos os Orçamentos</a> |
+      <a href="edita.php?id=388" title="Orçamento #388">Orçamento #388</a>
+	</div>
+
+	<p style="clear: both; border-top: solid 1px #DDD; ">&nbsp;</p>
+
+        <div class="clear">&nbsp;</div>
+
+            <p style="color: #C00; font-weight: bold; padding: 0 0 10px 12px; font-size: 16px;">&raquo; Produtos deste Orçamento</p>
+
+                <div class="box_prod_adc" style="height: 350px;">
+                    <a rel="lightbox[roadtrip]" href="images/produtos/mochilas03.jpg" title="Mochila Rapel"><img src="images/produtos/mochilas03.jpg" title="Mochila Rapel" alt="Mochila Rapel" width="200" height="164" /></a><br />
+                    <p style="padding-top: 7px;"><a href="../produtos/edita.php?id=23" title="Mochila Rapel">Mochila Rapel</a></p>
+					<p style="padding: 5px 0px 4px 0px; margin-top: 5px; background: #EEE;">
+						<input type="checkbox" name="" /> Incluir no orçamento
+					</p>
+					<p style="padding-top: 7px; line-height: 22px;">
+						<input type="radio" name="a" /> <span style="color: #999;">Quantidade 1:</span> <strong>1000</strong><br />
+						<input type="radio" name="a" /> <span style="color: #999;">Quantidade 2:</span> <strong>2000</strong><br />
+						<input type="radio" name="a" /> <span style="color: #999;">Quantidade 3:</span> <strong>3000</strong>
+					</p>
+                </div>
+
+                <div class="box_prod_adc" style="height: 350px;">
+                    <a rel="lightbox[roadtrip]" href="images/produtos/mochilas06.jpg" title="Mochila Trilha"><img src="images/produtos/mochilas06.jpg" title="Mochila Trilha" alt="Mochila Trilha" width="200" height="164" /></a><br />
+                    <p style="padding-top: 7px;"><a href="../produtos/edita.php?id=24" title="Mochila Trilha">Mochila Trilha</a></p>
+					<p style="padding: 5px 0px 4px 0px; margin-top: 5px; background: #EEE;">
+						<input type="checkbox" name="" /> Incluir no orçamento
+					</p>
+					<p style="padding-top: 7px; line-height: 22px;">
+						<label><input type="radio" name="b" /> <span style="color: #999;">Quantidade 1:</span> <strong>1000</strong></label><br />
+						<label><input type="radio" name="b" /> <span style="color: #999;">Quantidade 2:</span> <strong>2000</strong></label><br />
+						<label><input type="radio" name="b" /> <span style="color: #999;">Quantidade 3:</span> <strong>3000</strong></label>
+					</p>
+                </div>
+            
+				<div class="clear" style="text-align:center;">
+					<input type="submit" name="bSubmit" id="bSubmit" value="Gerar Pedido" style="padding: 4px; width: 130px;"/>
+				</div>
+    
+	<div class="clear">&nbsp;</div>
+	<div id="footer">2005-2012 &copy; SIM V 0.10 - Desenvolvimento <a href="http://www.awsoft.com.br" target="_blank" title="AWSoft!">AWSoft!</a></div>
+</div>
+
+</body>
+</html>

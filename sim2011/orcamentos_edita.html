@@ -1,0 +1,846 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+<head>
+<title>AWSoft! Dev</title>
+<meta name="date" content="17/06/2006 16:14" />
+<meta name="author" content="AWSoft!" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="shortcut icon" href="favicon.ico" />
+<link type="text/css" rel="stylesheet" href="style.css" />
+
+<script type="text/javascript" src="plugins/libjs/lib.js"></script>
+<script type="text/javascript" src="plugins/libjs/tolltip.js"></script>
+<script type="text/javascript" src="plugins/libjs/arah.js"></script>
+
+<link type="text/css" media="screen" rel="stylesheet" href="plugins/lightbox/lightbox.css" />
+<script type="text/javascript" src="plugins/lightbox/prototype.js"></script>
+<script type="text/javascript" src="plugins/lightbox/scriptaculous.js?load=effects"></script>
+<script type="text/javascript" src="plugins/lightbox/lightbox.js"></script>
+
+<script>
+// formata valor
+function sprintf() {
+
+	if (!arguments || arguments.length < 1 || !RegExp) {
+		return;
+	}
+
+	var str = arguments[0];
+	var re = /([^%]*)%('.|0|\x20)?(-)?(\d+)?(\.\d+)?(%|b|c|d|u|f|o|s|x|X)(.*)/;
+	var a = b = [], numSubstitutions = 0, numMatches = 0;
+	while (a = re.exec(str)) {
+
+		var leftpart = a[1], pPad = a[2], pJustify = a[3], pMinLength = a[4];
+		var pPrecision = a[5], pType = a[6], rightPart = a[7];
+
+		//alert(a + '\n' + [a[0], leftpart, pPad, pJustify, pMinLength, pPrecision);
+
+		numMatches++;
+		if (pType == '%') {
+			subst = '%';
+		} else{
+
+			numSubstitutions++;
+			if (numSubstitutions >= arguments.length) {
+				alert('Error! Not enough function arguments (' + (arguments.length - 1) + ', excluding the string)\nfor the number of substitution parameters in string (' + numSubstitutions + ' so far).');
+			}
+			var param = arguments[numSubstitutions];
+			var pad = '';
+				   if (pPad && pPad.substr(0,1) == "'") pad = leftpart.substr(1,1);
+			  else if (pPad) pad = pPad;
+			var justifyRight = true;
+				   if (pJustify && pJustify === "-") justifyRight = false;
+			var minLength = -1;
+				   if (pMinLength) minLength = parseInt(pMinLength);
+			var precision = -1;
+				   if (pPrecision && pType == 'f') precision = parseInt(pPrecision.substring(1));
+			var subst = param;
+				   if (pType == 'b') subst = parseInt(param).toString(2);
+			  else if (pType == 'c') subst = String.fromCharCode(parseInt(param));
+			  else if (pType == 'd') subst = parseInt(param) ? parseInt(param) : 0;
+			  else if (pType == 'u') subst = Math.abs(param);
+			  else if (pType == 'f') subst = (precision > -1) ? Math.round(parseFloat(param) * Math.pow(10, precision)) / Math.pow(10, precision): parseFloat(param);
+			  else if (pType == 'o') subst = parseInt(param).toString(8);
+			  else if (pType == 's') subst = param;
+			  else if (pType == 'x') subst = ('' + parseInt(param).toString(16)).toLowerCase();
+			  else if (pType == 'X') subst = ('' + parseInt(param).toString(16)).toUpperCase();
+		}
+		str = leftpart + subst + rightPart;
+	}
+	return str;
+}
+
+function formatFloat(str) {
+
+	// se a string tiver ponto então faço o tratamento para cada situação
+	if (str.toString().indexOf('.') != -1) {
+
+		var valor = sprintf('%.2f', str);
+        if (valor.indexOf(".") != 0) {
+            valor = valor + '.00';
+        }
+		var dadosMoeda = valor.toString();
+		var arrDadosMoeda = dadosMoeda.split('.');
+		
+             if (arrDadosMoeda[1] == 'undefined') return arrDadosMoeda[0] + '.00';
+        else if (arrDadosMoeda[1].length == 1) return arrDadosMoeda[0] + '.' + arrDadosMoeda[1] + '0';
+        else if (arrDadosMoeda[1].length == 2) return arrDadosMoeda[0] + '.' + arrDadosMoeda[1];
+        else return sprintf('%.2f',str).toString();
+
+	} else {
+        return str + '.00';
+	}
+}
+
+function calcOrcamento(nprodutos, qtd) {
+
+    // determina qual é a quantidade
+    var extra = '';
+    if (qtd == 1) {
+        var extra = '';
+    } else if (qtd == 2) {
+        var extra = '_extra1';
+    } else if (qtd == 3) {
+        var extra = '_extra2';
+    }
+
+    var total = 0;
+
+    // cálculo da quantidade em todos os ítens
+    for (i = 1; i <= nprodutos; i++) {
+        var quantidade = document.getElementById('produto__' + i + '__quantidade' + extra);
+        var valor = document.getElementById('produto__' + i + '__valor' + extra);
+        var valorAdicionalPorUnidade = document.getElementById('produto__' + i + '__valorAdicionalPorUnid' + extra);
+        var valorAdicional = document.getElementById('produto__' + i + '__valorAdicional' + extra);
+        var desconto = document.getElementById('produto__' + i + '__desconto' + extra);
+        var descontoPorUnidade = document.getElementById('produto__' + i + '__descontoPorUnid' + extra);
+        var subtotal = 0;
+        subtotal = subtotal + (parseInt(quantidade.value) * parseFloat(valor.value));
+        subtotal = subtotal + (parseInt(quantidade.value) * parseFloat(valorAdicionalPorUnidade.value));
+        subtotal = subtotal - (parseInt(quantidade.value) * parseFloat(descontoPorUnidade.value));
+        subtotal = subtotal - parseFloat(desconto.value);
+        subtotal = subtotal + parseFloat(valorAdicional.value);
+        if (!isNaN(subtotal)) {
+            document.getElementById('produto__' + i + '__valorFinal' + extra).value = formatFloat(subtotal);
+            total = total + subtotal;
+        } else {
+            document.getElementById('produto__' + i + '__valorFinal' + extra).value = 0.00;
+        }
+    }
+
+    // cálculo do desconto sobre o montante
+    var descontoMontante = document.getElementById('form_desconto' + extra).value;
+    descontoMontante = calcPorcentagem(descontoMontante, total);
+    total = round(total - descontoMontante);
+    document.getElementById('form_valorPedido' + extra).value = formatFloat(total);
+
+    // cálculo da comissão do vendedor
+    var comissaoTaxaPercentual = document.getElementById('form_comissaoTaxaPercentual').value;
+    var comissaoVendedor = round(calcPorcentagem(comissaoTaxaPercentual, total));
+    document.getElementById('form_comissaoVendedor' + extra).value = formatFloat(comissaoVendedor);
+}
+
+function trataVendedor() {
+    var vendedor = document.getElementById('vendedor').value;
+    arrVendedor = vendedor.split('|');
+    document.getElementById('form_idVendedor').value = arrVendedor[0];
+    document.getElementById('form_nomeVendedor').value = arrVendedor[1];
+}
+
+function validate() {
+
+    var numero_produtos = 2;
+    for (i = 1; i <= numero_produtos; i++) {
+
+        var valorFinal = parseInt(document.getElementById('produto__' + i + '__valorFinal').value);
+
+        if (valorFinal == '00.00' || valorFinal == '0.00' || isNaN(valorFinal)) {
+
+            var nomeProduto = document.getElementById('produto__' + i + '__nome').value;
+            window.alert('Produto "' + nomeProduto + '" com o Sub-Total inválido!');
+            return false;
+        }
+    }
+
+    var valorPedido = document.form1.form_valorPedido.value;
+    if (valorPedido == '00.00' || valorPedido == '0.00') {
+        window.alert('O valor do Pedido é inválido!');
+        return false;
+    }
+
+    var vendedor = document.form1.vendedor.value;
+    if (vendedor == 'NULL') {
+        window.alert('Informe o nome do Vendedor!');
+        document.form1.vendedor.focus();
+        return false;
+    }
+
+    var status = document.form1.form_status.value;
+    if (status == 'NULL') {
+        window.alert('Informe o status do Pedido!');
+        document.form1.form_status.focus();
+        return false;
+    }
+
+    /* var enderecoEntrega = document.form1.form_enderecoEntrega.value.length;
+    if (enderecoEntrega < 4) {
+        window.alert("Endereço de Entrega inválido!\nInforme um novo endereço ou utilize o endereço atual do cliente");
+        document.form1.form_enderecoEntrega.focus();
+        return false;
+    } */
+
+    var descricao = document.form1.form_descricao.value.length;
+    if (descricao < 3) {
+        window.alert('Informe a descrição do Pedido!');
+        document.form1.form_descricao.focus();
+        return false;
+    }
+
+    document.form1.bSubmit.disabled = true;
+}
+
+function copyEmail() {
+    document.getElementById('re_cc').value = 'araujo@awsoft.com.br';
+}
+
+function copyAddress() {
+
+    var endereco = '';
+
+    if (endereco == '') {
+        window.alert('Endereço da empresa não cadastrado!');
+    } else {
+        endereco = '  São Paulo SP ';
+        document.getElementById('form_enderecoEntrega').value = endereco;
+    }
+}
+
+function search() {
+    q = document.getElementById('q');
+    if (q.value == 'Buscar' || q.value == '') {
+        window.alert('Informe uma busca válida!');
+        q.focus();
+        return false;
+    }
+    document.getElementById('submitq').disabled = true;
+}
+
+function frete() {
+    var origem = document.getElementById('frete_cepOrigem');
+    var destino = document.getElementById('frete_cepDestino');
+    var peso = document.getElementById('frete_peso');
+    var codigo = document.getElementById('frete_codigo');
+
+    if (origem.value.length != 9) {
+        window.alert("informe um CEP de ORIGEM válido!\nUtilize o formato 04321-000");
+        origem.focus();
+        return false;
+    }
+
+    if (destino.value.length != 9) {
+        window.alert("informe um CEP de DESTINO válido!\nUtilize o formato 04321-000");
+        destino.focus();
+        return false;
+    }
+
+    araSetInputs('frete.php?origem=' + origem.value + '&destino=' + destino.value + '&envio=' + codigo.value + '&peso=' + peso.value, 'divfrete', 'consultando os CORREIOS...');
+}
+</script>
+
+<script type="text/javascript" language="javascript" src="plugins/lytebox/lytebox.js"></script>
+<link type="text/css" media="screen" rel="stylesheet" href="plugins/lytebox/lytebox.css" />
+
+</head>
+<body onload="calcOrcamento(2, 1),calcOrcamento(2, 2),calcOrcamento(2, 3);">
+
+<div id="header_top">
+	<div class="right" style="text-align: right;">
+            olá <b>Ará!</b> &nbsp;|&nbsp;
+            <a href="javascript:void(-1);" title="Usuários">Usuários</a> &nbsp;|&nbsp;
+			<a href="javascript:void(-1);" title="Minha Conta">Minha Conta</a> &nbsp;|&nbsp; 
+            <a href="javascript:void(-1);" title="Sair" style="color: #F00;">Sair</a>
+
+		<form name="formq" method="post" action="index.php" onsubmit="return search();">
+            <select name="tipo" style="padding: 2px; width: 170px;">
+                <option value="a.id">Número do Orçamento</option>
+                <option value="a.nome">Solicitante</option>
+                <option value="a.enderecoEntrega">Endereço de Entrega</option>
+                <option value="a.descricao">Descrição</option>
+                <option value="a.servicosAdicionais">Serviços Adicionais</option>
+                <option value="a.notas">Notas</option>
+            </select>&nbsp;
+			<input name="q" id="q" type="text" style="width: 163px; padding: 2px;" value="Buscar" onfocus="if(this.value==this.defaultValue)this.value=''" onblur="if(this.value=='')this.value=this.defaultValue" />&nbsp;
+			<input type="submit" name="submitq" id="submitq" value="ok!" style="width: 35px; padding: 1px;" />
+		</form>
+	</div>
+
+    <h2><img src="images/sim/logo_awsoft.jpg" style="max-height: 90px;" /></h2>
+</div>
+
+<div class="menu">
+    		<ul class="menu-hv">
+                    <li><a href="index.html" target="_self" title="Home">Home</a></li>
+                    <li><a href="javascript:void(-1);" target="_self" title="Ferramentas">Ferramentas</a>
+                            <ul>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Links">Links</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Banners">Banners</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Newsletters">Newsletters</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Gerenciador">Gerenciador</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Páginas">Páginas</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Textos">Textos</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Forms">Forms</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Temas">Temas</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Widgets">Widgets</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Logos">Logos</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Configurações">Configurações</a>
+                                </ul>
+                        </li>
+        		</ul></div>
+
+<h1 class="title_pag"><span>Você está em:</span> Orçamentos &raquo; Orçamento #391</h1>
+
+<div id="content_main" style="padding-top: 0px;">
+
+	
+    
+        <div class="adg">
+            <p class="right" style="text-align: right;">
+                <a onclick="return del('Tem certeza que deseja excluir esse orçamento???\nATENÇÃO: Todos os dados relacionados também serão excluídos permanentemente!');" href="javascript:void(-1);" style="color: #F00;" title="excluir este orçamento">excluir este orçamento</a><br />
+                Orçamento #<b>391</b><br />
+                Identificação externa: <b>111</b><br />
+                <span style="color:#f00">2</span> produto(s) para esse orçamento<br />
+                <a title="AWSoft!" href="javascript:void(-1);">AWSoft!</a>            </p>
+            <p>
+            <a href="javascript:void(-1);" rel="lyteframe" rev="width: 530px; height: 405px; scrolling: no;" title="Enviar um comentário">Enviar um comentário</a> | 
+            <a href="javascript:void(-1);" title="Visualizar para impressão">Visualizar para impressão</a> |
+            <a href="javascript:void(-1);" title="Gerenciar produtos deste orçamento">Gerenciar produtos deste orçamento</a>
+            <br />
+                Status: <span style="font-weight:bold;" class="status3">Em Andamento</span><br />
+                Orçamento criado em: 17/05/2012 às 19:13:10<br />
+                Última Atualização: 17/05/2012 às 19:28:07<br />
+                Solicitação feita por: <b>João</b><br />
+                Origem da Solicitação: <b style="color:#090;">eBrindes</b>
+            </p>
+        </div>
+
+    <form name="form1" method="post" action="dao.php" onsubmit="javascript:return validate(this)" class="form_zx">
+        <input type="hidden" name="action" value="update" />
+        <input type="hidden" name="redir" value="edita" />
+        <input type="hidden" name="nprodutos" value="2" />
+        <input type="hidden" name="id" value="391" />
+        <input type="hidden" name="form_idVendedor" id="form_idVendedor" value="3" />
+        <input type="hidden" name="form_nomeVendedor" id="form_nomeVendedor" value="Ará" />
+
+        <div class="box_form_l">
+         <a href="javascript:void(-1);" title="MARCAR ORÇAMENTO">MARCAR ORÇAMENTO</a>:<br />
+         <select name="form_marcador" id="form_marcador">
+            <option value="">- - -</option>
+                            <option value="1" >entrada</option>
+                            <option value="54" selected>Importante</option>
+                     </select>
+        </div>
+
+        <div class="box_form_r">
+         Status do Orçamento:<br />
+         <select name="form_status" id="form_status">
+            <option value="NULL">Informe o Status</option>
+                            <option value="0" >Cancelado</option>
+                            <option value="1" >Finalizado</option>
+                            <option value="2" >Novo</option>
+                            <option value="3" selected>Em Andamento</option>
+                     </select>
+        </div>
+
+        <p style="border-top: solid 1px #DDD; margin: 10px 0 0 0; float: left; width: 100%;">&nbsp;</p>
+
+        <div class="box_form_l">
+         Data de Entrega <a href="javascript:void(-1);" onMouseover="ddrivetip('data prevista para a entrega do produto ao cliente!')"; onMouseout="hideddrivetip()"><b>?</b></a><br />
+         <select name="diaEntrega" style="margin: 4px 0 6px 0; width: 100px; padding: 4px">
+            <option value="00">Dia</option>
+                            <option value="1" >1</option>
+                            <option value="2" >2</option>
+                            <option value="3" >3</option>
+                            <option value="4" >4</option>
+                            <option value="5" >5</option>
+                            <option value="6" >6</option>
+                            <option value="7" >7</option>
+                            <option value="8" >8</option>
+                            <option value="9" >9</option>
+                            <option value="10" >10</option>
+                            <option value="11" >11</option>
+                            <option value="12" >12</option>
+                            <option value="13" >13</option>
+                            <option value="14" >14</option>
+                            <option value="15" >15</option>
+                            <option value="16" >16</option>
+                            <option value="17" >17</option>
+                            <option value="18" >18</option>
+                            <option value="19" >19</option>
+                            <option value="20" >20</option>
+                            <option value="21" >21</option>
+                            <option value="22" >22</option>
+                            <option value="23" >23</option>
+                            <option value="24" >24</option>
+                            <option value="25" >25</option>
+                            <option value="26" >26</option>
+                            <option value="27" >27</option>
+                            <option value="28" >28</option>
+                            <option value="29" >29</option>
+                            <option value="30" selected>30</option>
+                            <option value="31" >31</option>
+                     </select>&nbsp;
+
+         <select name="mesEntrega" style="margin: 4px 0 6px 0; width: 100px; padding: 4px">
+            <option value="00">Mês</option>
+                            <option value="1" >Janeiro</option>
+                            <option value="2" >Fevereiro</option>
+                            <option value="3" >Março</option>
+                            <option value="4" >Abril</option>
+                            <option value="5" >Maio</option>
+                            <option value="6" >Junho</option>
+                            <option value="7" >Julho</option>
+                            <option value="8" selected>Agosto</option>
+                            <option value="9" >Setembro</option>
+                            <option value="10" >Outubro</option>
+                            <option value="11" >Novembro</option>
+                            <option value="12" >Dezembro</option>
+                     </select>&nbsp;
+
+         <select name="anoEntrega" style="margin: 4px 0 6px 0; width: 100px; padding: 4px">
+            <option value="0000">Ano</option>
+                            <option value="2011" >2011</option>
+                            <option value="2012" selected>2012</option>
+                            <option value="2013" >2013</option>
+                     </select>
+        </div>
+
+        <div class="box_form_r">
+         Data de Validade <a href="javascript:void(-1);" onMouseover="ddrivetip('data que determina a validade dos valores e das condições do orçamento!')"; onMouseout="hideddrivetip()"><b>?</b></a><br />
+         <select name="diaValidade" style="margin: 4px 0 6px 0; width: 100px; padding: 4px">
+            <option value="00">Dia</option>
+                            <option value="1" >1</option>
+                            <option value="2" >2</option>
+                            <option value="3" >3</option>
+                            <option value="4" >4</option>
+                            <option value="5" >5</option>
+                            <option value="6" >6</option>
+                            <option value="7" >7</option>
+                            <option value="8" >8</option>
+                            <option value="9" >9</option>
+                            <option value="10" >10</option>
+                            <option value="11" selected>11</option>
+                            <option value="12" >12</option>
+                            <option value="13" >13</option>
+                            <option value="14" >14</option>
+                            <option value="15" >15</option>
+                            <option value="16" >16</option>
+                            <option value="17" >17</option>
+                            <option value="18" >18</option>
+                            <option value="19" >19</option>
+                            <option value="20" >20</option>
+                            <option value="21" >21</option>
+                            <option value="22" >22</option>
+                            <option value="23" >23</option>
+                            <option value="24" >24</option>
+                            <option value="25" >25</option>
+                            <option value="26" >26</option>
+                            <option value="27" >27</option>
+                            <option value="28" >28</option>
+                            <option value="29" >29</option>
+                            <option value="30" >30</option>
+                            <option value="31" >31</option>
+                     </select>&nbsp;
+
+         <select name="mesValidade" style="margin: 4px 0 6px 0; width: 100px; padding: 4px">
+            <option value="00">Mês</option>
+                            <option value="1" >Janeiro</option>
+                            <option value="2" >Fevereiro</option>
+                            <option value="3" >Março</option>
+                            <option value="4" >Abril</option>
+                            <option value="5" >Maio</option>
+                            <option value="6" >Junho</option>
+                            <option value="7" selected>Julho</option>
+                            <option value="8" >Agosto</option>
+                            <option value="9" >Setembro</option>
+                            <option value="10" >Outubro</option>
+                            <option value="11" >Novembro</option>
+                            <option value="12" >Dezembro</option>
+                     </select>&nbsp;
+
+         <select name="anoValidade" style="margin: 4px 0 6px 0; width: 100px; padding: 4px">
+            <option value="0000">Ano</option>
+                            <option value="2011" >2011</option>
+                            <option value="2012" selected>2012</option>
+                            <option value="2013" >2013</option>
+                     </select>
+        </div>
+
+        <p style="border-top: solid 1px #DDD; margin: 10px 0 0 0; clear: left; width: 100%;">&nbsp;</p>
+
+    
+            <div class="abvd" onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+
+            <div class="box_form_full" style="padding: 25px 20px 25px 20px;">
+                <p style="border: solid 0px; float: right;"><a onclick="return del('Tem certeza que deseja retirar esse produto do orçamento ???\nNão será possível recuperar seus dados!');" href="javascript:void(-1);" style="color: #F00;" title="excluir este produto">excluir este produto</a></p>
+                <p style="border: solid 0px; width: 700px;">
+                    <b>Cubo mágico</b> |
+                    <a rel="lightbox[roadtrip]" href="javascript:void(-1);" title="Cubo mágico">Ver foto</a>
+                </p>
+
+
+                 <input type="hidden" name="produto__1__id" id="produto__1__id" value="0" />
+                 <input type="hidden" name="produto__1__nome" id="produto__1__nome" value="Cubo mágico" />
+                 <input type="hidden" name="produto__1__foto" id="produto__1__foto" value="http://www.ebrindes.com.br/content/interfaces/ebrindes/images/produtos/425_jogo72.png" />
+            </div>
+
+            <div class="clear" style="padding: 0 0 0 10px;">
+              <table border="0" width="100%" cellspacing="0" cellpadding="0" style="margin: 0 0 0 0;">
+                <tr>
+                    <td width="224">
+                         <a href="javascript:void(-1);" title="Tipo da Embalagem">Tipo da Embalagem</a>:<br />
+                         <select name="produto__1__tipoEmbalagem" id="produto__1__tipoEmbalagem" style="margin: 4px 0 6px 0; width: 205px; padding: 4px">
+                            <option value="0">- - -</option>
+                                                            <option value="4" >Caixa 24 Unidades</option>
+                                                            <option value="3" selected>Saco Plástico Dúzia</option>
+                                                            <option value="2" >Saco Plástico Individual</option>
+                                                     </select>
+                    </td>
+                    <td width="240">
+                         <a href="javascript:void(-1);" title="Tipo de Gravação">Tipo de Gravação</a>:<br />
+                         <select name="produto__1__tipoGravacao" id="produto__1__tipoGravacao" style="margin: 4px 0 6px 0; width: 210px; padding: 4px">
+                            <option value="">- - -</option>
+                                                            <option value="53" >Laser</option>
+                                                            <option value="41" selected>Tampografia</option>
+                                                     </select>
+                    </td>
+                    <td width="110">
+                        Qtd. de cores <a href="javascript:void(-1);" onMouseover="ddrivetip('quantidade de cores para impressão e personalização do produto ( logotipo da empresa por exemplo )')"; onMouseout="hideddrivetip()"><b>?</b></a><br />
+                        <input type="text" name="produto__1__quantidade_coresimpressao" id="produto__1__quantidade_coresimpressao" maxlength="2" value="1" style="width: 80px; margin: 4px 0 6px 0; padding: 4px" />
+                    </td>
+                    <td>
+                        Cor(es):<br />
+                        <input type="text" name="produto__1__cor" id="produto__1__cor" value="" style="width: 320px; margin: 4px 0 6px 0; padding: 4px" />
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="clear" style="padding: 0 0 5px 10px; border: solid 0px;">
+              <table border="0" width="100%" cellspacing="0" cellpadding="0" style="margin: 10px 0 10px 0;">
+                <tr>
+                    <td>Quantidade (1)<br /><input type="text" name="produto__1__quantidade" id="produto__1__quantidade" value="100" maxlength="6" onblur="calcOrcamento(2, 1);" style="width:80px;" /></td>
+                    <td>Valor<br /><input type="text" name="produto__1__valor" id="produto__1__valor" value="3.00" maxlength="8" onblur="replaceComa('produto__1__valor'),calcOrcamento(2, 1);" style="width:80px;"  /></td>
+                    <td>Valor Ad. Unid. <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Valor Adicional por Unidade:</b> determina um valor adicional em Reais para cada ítem da quantidade 1')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__1__valorAdicionalPorUnid" id="produto__1__valorAdicionalPorUnid" value="0.00" onblur="replaceComa('produto__1__valorAdicionalPorUnid'),calcOrcamento(2, 1);" maxlength="8" style="width:80px;" /></td>
+                    <td>Valor Adicional <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Valor Adicional:</b> determina um valor adicional em Reais para o total da quantidade 1')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__1__valorAdicional" id="produto__1__valorAdicional" value="0.00" onblur="replaceComa('produto__1__valorAdicional'),calcOrcamento(2, 1);" maxlength="8" style="width:80px;" /></td>
+                    <td>Desc. Unid. <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Desconto por Unidade:</b> determina um desconto em Reais para cada ítem da quantidade 1')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__1__descontoPorUnid" id="produto__1__descontoPorUnid" value="0.00" maxlength="5" onblur="replaceComa('produto__1__descontoPorUnid'),calcOrcamento(2, 1);" style="width:80px;" /></td>
+                    <td>Desconto <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Desconto:</b> determina um desconto em Reais para o total da quantidade 1')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__1__desconto" id="produto__1__desconto" value="0.00" maxlength="5" onblur="replaceComa('produto__1__desconto'),calcOrcamento(2, 1);" style="width:80px;" /></td>
+                    <td>Dias para entrega<br /><input type="text" name="produto__1__diasEntrega" id="produto__1__diasEntrega" value="12" maxlength="5" style="width:80px;" /></td>
+                    <td>Sub-Total<br /><input type="text" name="produto__1__valorFinal" id="produto__1__valorFinal" value="300.00" maxlength="9" readonly style="width:80px;" /></td>
+                </tr>
+                <tr><td colspan="8">&nbsp;</td></tr>
+                <tr>
+                    <td>Quantidade (2)<br /><input type="text" name="produto__1__quantidade_extra1" id="produto__1__quantidade_extra1" value="200" maxlength="6" onblur="calcOrcamento(2, 2);" style="width:80px;" /></td>
+                    <td>Valor<br /><input type="text" name="produto__1__valor_extra1" id="produto__1__valor_extra1" value="2.00" maxlength="8" onblur="replaceComa('produto__1__valor_extra1'),calcOrcamento(2, 2);" style="width:80px;"  /></td>
+                    <td>Valor Ad. Unid. <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Valor Adicional por Unidade:</b> determina um valor adicional em Reais para cada ítem da quantidade 2')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__1__valorAdicionalPorUnid_extra1" id="produto__1__valorAdicionalPorUnid_extra1" value="0.00" onblur="replaceComa('produto__1__valorAdicionalPorUnid_extra1'),calcOrcamento(2, 2);" maxlength="8" style="width:80px;" /></td>
+                    <td>Valor Adicional <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Valor Adicional:</b> determina um valor adicional em Reais para o total da quantidade 2')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__1__valorAdicional_extra1" id="produto__1__valorAdicional_extra1" value="0.00" onblur="replaceComa('produto__1__valorAdicional_extra1'),calcOrcamento(2, 2);" maxlength="8" style="width:80px;" /></td>
+                    <td>Desc. Unid. <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Desconto por Unidade:</b> determina um desconto em Reais para cada ítem da quantidade 2')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__1__descontoPorUnid_extra1" id="produto__1__descontoPorUnid_extra1" value="0.00" maxlength="5" onblur="replaceComa('produto__1__descontoPorUnid_extra1'),calcOrcamento(2, 2);" style="width:80px;" /></td>
+                    <td>Desconto <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Desconto:</b> determina um desconto em Reais para o total da quantidade 2')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__1__desconto_extra1" id="produto__1__desconto_extra1" value="0.00" maxlength="5" onblur="replaceComa('produto__1__desconto_extra1'),calcOrcamento(2, 2);" style="width:80px;" /></td>
+                    <td>Dias para entrega<br /><input type="text" name="produto__1__diasEntrega_extra1" id="produto__1__diasEntrega_extra1" value="23" maxlength="3" style="width:80px;" /></td>
+                    <td>Sub-Total<br /><input type="text" name="produto__1__valorFinal_extra1" id="produto__1__valorFinal_extra1" value="400.00" maxlength="9" readonly style="width:80px;" /></td>
+                </tr>
+                <tr><td colspan="8">&nbsp;</td></tr>
+                <tr>
+                    <td>Quantidade (3)<br /><input type="text" name="produto__1__quantidade_extra2" id="produto__1__quantidade_extra2" value="300" maxlength="6" onblur="calcOrcamento(2, 3);" style="width:80px;" /></td>
+                    <td>Valor<br /><input type="text" name="produto__1__valor_extra2" id="produto__1__valor_extra2" value="1.00" maxlength="8" onblur="replaceComa('produto__1__valor_extra2'),calcOrcamento(2, 3);" style="width:80px;"  /></td>
+                    <td>Valor Ad. Unid. <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Valor Adicional por Unidade:</b> determina um valor adicional em Reais para cada ítem da quantidade 3')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__1__valorAdicionalPorUnid_extra2" id="produto__1__valorAdicionalPorUnid_extra2" value="0.00" onblur="replaceComa('produto__1__valorAdicionalPorUnid_extra2'),calcOrcamento(2, 3);" maxlength="8" style="width:80px;" /></td>
+                    <td>Valor Adicional <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Valor Adicional:</b> determina um valor adicional em Reais para o total da quantidade 3')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__1__valorAdicional_extra2" id="produto__1__valorAdicional_extra2" value="0.00" onblur="replaceComa('produto__1__valorAdicional_extra2'),calcOrcamento(2, 3);" maxlength="8" style="width:80px;" /></td>
+                    <td>Desc. Unid.  <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Desconto por Unidade:</b> determina um desconto em Reais para cada ítem da quantidade 3')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__1__descontoPorUnid_extra2" id="produto__1__descontoPorUnid_extra2" value="0.00" maxlength="5" onblur="replaceComa('produto__1__descontoPorUnid_extra2'),calcOrcamento(2, 3);" style="width:80px;" /></td>
+                    <td>Desconto <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Desconto:</b> determina um desconto em Reais para o total da quantidade 3')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__1__desconto_extra2" id="produto__1__desconto_extra2" value="0.00" maxlength="5" onblur="replaceComa('produto__1__desconto_extra2'),calcOrcamento(2, 3);" style="width:80px;" /></td>
+                    <td>Dias para entrega<br /><input type="text" name="produto__1__diasEntrega_extra2" id="produto__1__diasEntrega_extra2" value="34" maxlength="3" style="width:80px;" /></td>
+                    <td>Sub-Total<br /><input type="text" name="produto__1__valorFinal_extra2" id="produto__1__valorFinal_extra2" value="300.00" maxlength="9" readonly style="width:80px;" /></td>
+                </tr>
+              </table>
+            </div>
+
+        </div>
+
+        <p style="border-top: solid 1px #DDD; margin: 10px 0 0 0; float: left; width: 100%;">&nbsp;</p>
+
+    
+            <div class="abvd" onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+
+            <div class="box_form_full" style="padding: 25px 20px 25px 20px;">
+                <p style="border: solid 0px; float: right;"><a onclick="return del('Tem certeza que deseja retirar esse produto do orçamento ???\nNão será possível recuperar seus dados!');" href="javascript:void(-1);" style="color: #F00;" title="excluir este produto">excluir este produto</a></p>
+                <p style="border: solid 0px; width: 700px;">
+                    <b>Pen Drive Giratório Madeira</b> |
+                    <a rel="lightbox[roadtrip]" href="javascript:void(-1);" title="Pen Drive Giratório Madeira">Ver foto</a>
+                </p>
+
+
+                 <input type="hidden" name="produto__2__id" id="produto__2__id" value="0" />
+                 <input type="hidden" name="produto__2__nome" id="produto__2__nome" value="Pen Drive Giratório Madeira" />
+                 <input type="hidden" name="produto__2__foto" id="produto__2__foto" value="http://www.ebrindes.com.br/content/interfaces/ebrindes/images/produtos/425_kn_246_banco_do_nord34.jpg" />
+            </div>
+
+            <div class="clear" style="padding: 0 0 0 10px;">
+              <table border="0" width="100%" cellspacing="0" cellpadding="0" style="margin: 0 0 0 0;">
+                <tr>
+                    <td width="224">
+                         <a href="javascript:void(-1);" title="Tipo da Embalagem">Tipo da Embalagem</a>:<br />
+                         <select name="produto__2__tipoEmbalagem" id="produto__2__tipoEmbalagem" style="margin: 4px 0 6px 0; width: 205px; padding: 4px">
+                            <option value="0">- - -</option>
+                                                            <option value="4" >Caixa 24 Unidades</option>
+                                                            <option value="3" selected>Saco Plástico Dúzia</option>
+                                                            <option value="2" >Saco Plástico Individual</option>
+                                                     </select>
+                    </td>
+                    <td width="240">
+                         <a href="javascript:void(-1);" title="Tipo de Gravação">Tipo de Gravação</a>:<br />
+                         <select name="produto__2__tipoGravacao" id="produto__2__tipoGravacao" style="margin: 4px 0 6px 0; width: 210px; padding: 4px">
+                            <option value="">- - -</option>
+                                                            <option value="53" >Laser</option>
+                                                            <option value="41" selected>Tampografia</option>
+                                                     </select>
+                    </td>
+                    <td width="110">
+                        Qtd. de cores <a href="javascript:void(-1);" onMouseover="ddrivetip('quantidade de cores para impressão e personalização do produto ( logotipo da empresa por exemplo )')"; onMouseout="hideddrivetip()"><b>?</b></a><br />
+                        <input type="text" name="produto__2__quantidade_coresimpressao" id="produto__2__quantidade_coresimpressao" maxlength="2" value="1" style="width: 80px; margin: 4px 0 6px 0; padding: 4px" />
+                    </td>
+                    <td>
+                        Cor(es):<br />
+                        <input type="text" name="produto__2__cor" id="produto__2__cor" value="" style="width: 320px; margin: 4px 0 6px 0; padding: 4px" />
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="clear" style="padding: 0 0 5px 10px; border: solid 0px;">
+              <table border="0" width="100%" cellspacing="0" cellpadding="0" style="margin: 10px 0 10px 0;">
+                <tr>
+                    <td>Quantidade (1)<br /><input type="text" name="produto__2__quantidade" id="produto__2__quantidade" value="100" maxlength="6" onblur="calcOrcamento(2, 1);" style="width:80px;" /></td>
+                    <td>Valor<br /><input type="text" name="produto__2__valor" id="produto__2__valor" value="3.00" maxlength="8" onblur="replaceComa('produto__2__valor'),calcOrcamento(2, 1);" style="width:80px;"  /></td>
+                    <td>Valor Ad. Unid. <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Valor Adicional por Unidade:</b> determina um valor adicional em Reais para cada ítem da quantidade 1')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__2__valorAdicionalPorUnid" id="produto__2__valorAdicionalPorUnid" value="0.00" onblur="replaceComa('produto__2__valorAdicionalPorUnid'),calcOrcamento(2, 1);" maxlength="8" style="width:80px;" /></td>
+                    <td>Valor Adicional <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Valor Adicional:</b> determina um valor adicional em Reais para o total da quantidade 1')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__2__valorAdicional" id="produto__2__valorAdicional" value="0.00" onblur="replaceComa('produto__2__valorAdicional'),calcOrcamento(2, 1);" maxlength="8" style="width:80px;" /></td>
+                    <td>Desc. Unid. <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Desconto por Unidade:</b> determina um desconto em Reais para cada ítem da quantidade 1')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__2__descontoPorUnid" id="produto__2__descontoPorUnid" value="0.00" maxlength="5" onblur="replaceComa('produto__2__descontoPorUnid'),calcOrcamento(2, 1);" style="width:80px;" /></td>
+                    <td>Desconto <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Desconto:</b> determina um desconto em Reais para o total da quantidade 1')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__2__desconto" id="produto__2__desconto" value="0.00" maxlength="5" onblur="replaceComa('produto__2__desconto'),calcOrcamento(2, 1);" style="width:80px;" /></td>
+                    <td>Dias para entrega<br /><input type="text" name="produto__2__diasEntrega" id="produto__2__diasEntrega" value="12" maxlength="5" style="width:80px;" /></td>
+                    <td>Sub-Total<br /><input type="text" name="produto__2__valorFinal" id="produto__2__valorFinal" value="300.00" maxlength="9" readonly style="width:80px;" /></td>
+                </tr>
+                <tr><td colspan="8">&nbsp;</td></tr>
+                <tr>
+                    <td>Quantidade (2)<br /><input type="text" name="produto__2__quantidade_extra1" id="produto__2__quantidade_extra1" value="200" maxlength="6" onblur="calcOrcamento(2, 2);" style="width:80px;" /></td>
+                    <td>Valor<br /><input type="text" name="produto__2__valor_extra1" id="produto__2__valor_extra1" value="2.00" maxlength="8" onblur="replaceComa('produto__2__valor_extra1'),calcOrcamento(2, 2);" style="width:80px;"  /></td>
+                    <td>Valor Ad. Unid. <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Valor Adicional por Unidade:</b> determina um valor adicional em Reais para cada ítem da quantidade 2')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__2__valorAdicionalPorUnid_extra1" id="produto__2__valorAdicionalPorUnid_extra1" value="0.00" onblur="replaceComa('produto__2__valorAdicionalPorUnid_extra1'),calcOrcamento(2, 2);" maxlength="8" style="width:80px;" /></td>
+                    <td>Valor Adicional <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Valor Adicional:</b> determina um valor adicional em Reais para o total da quantidade 2')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__2__valorAdicional_extra1" id="produto__2__valorAdicional_extra1" value="0.00" onblur="replaceComa('produto__2__valorAdicional_extra1'),calcOrcamento(2, 2);" maxlength="8" style="width:80px;" /></td>
+                    <td>Desc. Unid. <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Desconto por Unidade:</b> determina um desconto em Reais para cada ítem da quantidade 2')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__2__descontoPorUnid_extra1" id="produto__2__descontoPorUnid_extra1" value="0.00" maxlength="5" onblur="replaceComa('produto__2__descontoPorUnid_extra1'),calcOrcamento(2, 2);" style="width:80px;" /></td>
+                    <td>Desconto <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Desconto:</b> determina um desconto em Reais para o total da quantidade 2')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__2__desconto_extra1" id="produto__2__desconto_extra1" value="0.00" maxlength="5" onblur="replaceComa('produto__2__desconto_extra1'),calcOrcamento(2, 2);" style="width:80px;" /></td>
+                    <td>Dias para entrega<br /><input type="text" name="produto__2__diasEntrega_extra1" id="produto__2__diasEntrega_extra1" value="23" maxlength="3" style="width:80px;" /></td>
+                    <td>Sub-Total<br /><input type="text" name="produto__2__valorFinal_extra1" id="produto__2__valorFinal_extra1" value="400.00" maxlength="9" readonly style="width:80px;" /></td>
+                </tr>
+                <tr><td colspan="8">&nbsp;</td></tr>
+                <tr>
+                    <td>Quantidade (3)<br /><input type="text" name="produto__2__quantidade_extra2" id="produto__2__quantidade_extra2" value="300" maxlength="6" onblur="calcOrcamento(2, 3);" style="width:80px;" /></td>
+                    <td>Valor<br /><input type="text" name="produto__2__valor_extra2" id="produto__2__valor_extra2" value="1.00" maxlength="8" onblur="replaceComa('produto__2__valor_extra2'),calcOrcamento(2, 3);" style="width:80px;"  /></td>
+                    <td>Valor Ad. Unid. <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Valor Adicional por Unidade:</b> determina um valor adicional em Reais para cada ítem da quantidade 3')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__2__valorAdicionalPorUnid_extra2" id="produto__2__valorAdicionalPorUnid_extra2" value="0.00" onblur="replaceComa('produto__2__valorAdicionalPorUnid_extra2'),calcOrcamento(2, 3);" maxlength="8" style="width:80px;" /></td>
+                    <td>Valor Adicional <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Valor Adicional:</b> determina um valor adicional em Reais para o total da quantidade 3')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__2__valorAdicional_extra2" id="produto__2__valorAdicional_extra2" value="0.00" onblur="replaceComa('produto__2__valorAdicional_extra2'),calcOrcamento(2, 3);" maxlength="8" style="width:80px;" /></td>
+                    <td>Desc. Unid.  <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Desconto por Unidade:</b> determina um desconto em Reais para cada ítem da quantidade 3')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__2__descontoPorUnid_extra2" id="produto__2__descontoPorUnid_extra2" value="0.00" maxlength="5" onblur="replaceComa('produto__2__descontoPorUnid_extra2'),calcOrcamento(2, 3);" style="width:80px;" /></td>
+                    <td>Desconto <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Desconto:</b> determina um desconto em Reais para o total da quantidade 3')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="produto__2__desconto_extra2" id="produto__2__desconto_extra2" value="0.00" maxlength="5" onblur="replaceComa('produto__2__desconto_extra2'),calcOrcamento(2, 3);" style="width:80px;" /></td>
+                    <td>Dias para entrega<br /><input type="text" name="produto__2__diasEntrega_extra2" id="produto__2__diasEntrega_extra2" value="34" maxlength="3" style="width:80px;" /></td>
+                    <td>Sub-Total<br /><input type="text" name="produto__2__valorFinal_extra2" id="produto__2__valorFinal_extra2" value="300.00" maxlength="9" readonly style="width:80px;" /></td>
+                </tr>
+              </table>
+            </div>
+
+        </div>
+
+        <p style="border-top: solid 1px #DDD; margin: 10px 0 0 0; float: left; width: 100%;">&nbsp;</p>
+
+    
+        <div class="box_form_full">
+         Valor, Desconto e Comissão por Quantidade 1, 2 e 3
+        </div>
+
+        <div class="box_form_l">
+            <table border="0" cellspacing="2" cellpadding="0">
+             <tr>
+              <td width="130">Total Qtd 1 <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Total Quantidade 1:</b> soma dos sub-totais de todos os ítens')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="form_valorPedido" id="form_valorPedido" value="594.00" maxlength="9" readonly style="color:#f00; width:80px;" /></td>
+              <td width="130">Desc Qtd 1 <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Desconto sobre o valor total da quantidade 1</b><br />( em porcentagem )')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="form_desconto" id="form_desconto" value="1" maxlength="3" onblur="calcOrcamento(2, 1);" style="width:80px;" /></td>
+              <td width="130">Comissão <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Comissão de Venda:</b> de acordo com o Percentual do Vendedor (valor em Real)')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="form_comissaoVendedor" id="form_comissaoVendedor" value="59.40" style="width:80px;" readonly /></td>
+             </tr>
+            </table>
+        </div>
+
+        <div class="box_form_r">
+            <table border="0" cellspacing="2" cellpadding="0">
+             <tr>
+              <td width="130">Total Qtd 2 <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Total Quantidade 2:</b> soma dos sub-totais de todos os ítens')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="form_valorPedido_extra1" id="form_valorPedido_extra1" value="792.00" maxlength="9" readonly style="color:#f00; width:80px;" /></td>
+              <td width="130">Desc Qtd 2 <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Desconto sobre o valor total da quantidade 2</b><br />( em porcentagem )')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="form_desconto_extra1" id="form_desconto_extra1" value="1" maxlength="3" onblur="calcOrcamento(2, 2);" style="width:80px;" /></td>
+              <td width="130">Comissão <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Comissão de Venda:</b> de acordo com o Percentual do Vendedor (valor em Real)')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="form_comissaoVendedor_extra1" id="form_comissaoVendedor_extra1" value="79.20" onblur="calcOrcamento(2, 2);" style="width:80px;" readonly /></td>
+             </tr>
+            </table>
+        </div>
+
+        <div class="box_form_l">
+            <table border="0" cellspacing="2" cellpadding="0">
+             <tr>
+              <td width="130">Total Qtd 3 <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Total Quantidade 3:</b> soma dos sub-totais de todos os ítens')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="form_valorPedido_extra2" id="form_valorPedido_extra2" value="594.00" maxlength="9" readonly style="color:#f00; width:80px;" /></td>
+              <td width="130">Desc Qtd 3 <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Desconto sobre o valor total da quantidade 3</b><br />( em porcentagem )')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="form_desconto_extra2" id="form_desconto_extra2" value="1" maxlength="3" onblur="calcOrcamento(2, 3);" style="width:80px;" /></td>
+              <td width="130">Comissão <a href="javascript:void(-1);" onMouseover="ddrivetip('<b>Comissão de Venda:</b> de acordo com o Percentual do Vendedor (valor em Real)')"; onMouseout="hideddrivetip()"><b>?</b></a><br /><input type="text" name="form_comissaoVendedor_extra2" id="form_comissaoVendedor_extra2" value="59.40" onblur="calcOrcamento(2, 3);" style="width:80px;" readonly /></td>
+             </tr>
+            </table>
+        </div>
+
+        <div class="box_form_r">
+            &nbsp;
+        </div>
+
+        <p style="border-top: solid 1px #DDD; margin: 10px 0 0 0; float: left; width: 100%;">&nbsp;</p>
+
+        <div class="box_form_l">
+          <a onclick="javascript:window.open('vendedores.php', '', 'left=300,top=100,width=520,height=530,status=1,resizable=1,scrollbars=1');" href="javascript:void(-1);" title="Vendedor">Vendedor</a>:<br />
+          <select name="vendedor" id="vendedor" onchange="trataVendedor();" >
+            <option value="NULL">Informe o Vendedor</option>
+                            <option value="3|Ará" selected>Ará</option>
+                            <option value="10|Gustavo" >Gustavo</option>
+                            <option value="11|Ricardo" >Ricardo</option>
+                            <option value="12|Silva" >Silva</option>
+                            <option value="20|Gabriela" >Gabriela</option>
+                            <option value="19|Evandro" >Evandro</option>
+                            <option value="39|João" >João</option>
+                     </select>
+        </div>
+
+        <div class="box_form_r">
+         Percentual do Vendedor <a href="javascript:void(-1);" onMouseover="ddrivetip('em porcentagem (%)')"; onMouseout="hideddrivetip()"><b>?</b></a><br />
+         <input type="text" name="form_comissaoTaxaPercentual" id="form_comissaoTaxaPercentual" value="10" maxlength="3" onblur="calcOrcamento(2, 1),calcOrcamento(2, 2),calcOrcamento(2, 3);" style="width:385px;"  />
+        </div>
+
+        <p style="border-top: solid 1px #DDD; margin: 10px 0 0 0; float: left; width: 100%;">&nbsp;</p>
+
+        <div class="box_form_l">
+         <a href="javascript:void(-1);" title="Forma de Pagamento">Forma de Pagamento</a>:<br />
+         <select name="form_idFormaPagamento" id="form_idFormaPagamento">
+            <option value="">Informe a forma de Pagamento</option>
+                            <option value="10" selected>Boleto Bancário</option>
+                            <option value="11" >Cartão de Crédito</option>
+                            <option value="9" >Depósito Bancário / Transferência</option>
+                            <option value="12" >Dinheiro / Cheque</option>
+                            <option value="13" >Pagamento Parcelado</option>
+                     </select>
+        </div>
+
+        <div class="box_form_r">
+         <a href="javascript:void(-1);" title="Prazo de Pagamento">Prazo de Pagamento</a>: <a href="javascript:void(-1);" onMouseover="ddrivetip('prazo de pagamento<br />( <b>a contar após a data de fechamento do orçamento</b> )')"; onMouseout="hideddrivetip()"><b>?</b></a><br />
+         <select name="form_prazoPagamento" id="form_prazoPagamento">
+            <option value="">Informe o Prazo de Pagamento</option>
+                            <option value="15" selected>14 dias</option>
+                            <option value="16" >21 dias</option>
+                            <option value="17" >28 dias</option>
+                            <option value="14" >7 dias</option>
+                            <option value="19" >à combinar</option>
+                            <option value="18" >à vista</option>
+                     </select>
+        </div>
+
+        <div class="box_form_l">
+         <a href="javascript:void(-1);" title="Forma de Envio">Forma de Envio</a>:<br />
+         <select name="form_idFormaEnvio" id="form_idFormaEnvio">
+            <option value="">Informe a forma de Envio</option>
+                            <option value="24" >Cliente Retira</option>
+                            <option value="22" >Nosso Carro</option>
+                            <option value="20" >Sedex</option>
+                            <option value="21" >Sedex 10</option>
+                            <option value="23" selected>Transportadora</option>
+                     </select>
+        </div>
+
+        <p style="border-top: solid 1px #DDD; margin: 10px 0 0 0; float: left; width: 100%;">&nbsp;</p>
+
+        <div class="box_form_l">
+         <a href="javascript:void(-1);" title="Pagamento do Frete">Pagamento do Frete</a>:<br />
+         <select name="form_idPagamentoFrete" id="form_idPagamentoFrete">
+            <option value="">Informe o pagamento do Frete</option>
+                            <option value="27" >Cortesia</option>
+                            <option value="26" selected>Incluso no Pedido</option>
+                            <option value="25" >Por conta do Cliente</option>
+                     </select>
+        </div>
+
+        <div class="box_form_r">
+         Valor do Frete <a href="javascript:void(-1);" onMouseover="ddrivetip('valor em Real')"; onMouseout="hideddrivetip()"><b>?</b></a><br />
+         <input type="text" name="form_valorFrete" id="form_valorFrete" value="0.00" maxlength="8" onblur="replaceComa('form_valorFrete');" style="width: 385px;" />
+        </div>
+
+        <div class="box_form_l">
+         Tipo de envio de acordo com os CORREIOS:<br />
+         <select name="frete_codigo" id="frete_codigo">
+            <option value="41068">PAC com contrato - Cod 41068</option>
+            <option value="81119">e-SEDEX com contrato - Cod 81119</option>
+            <option value="40444">SEDEX com contrato - Cod 40444</option>
+            <option value="40436">SEDEX com contrato - Cod 40436</option>
+            <option value="40096">SEDEX com contrato - Cod 40096</option>
+            <option value="40290">SEDEX Hoje, sem contrato - Cod 40290</option>
+            <option value="40215">SEDEX 10, sem contrato - Cod 40215</option>
+            <option value="40045">SEDEX a cobrar, sem contrato - Cod 40045</option>
+            <option value="40010">SEDEX sem contrato - Cod 40010</option>
+            <option value="41106" selected>PAC sem contrato - Cod 41106</option>
+         </select>
+        </div>
+
+        <div class="box_form_r">
+         CEP de Origem <a href="javascript:void(-1);" onMouseover="ddrivetip('informe o CEP do local que será enviado a mercadoria!')"; onMouseout="hideddrivetip()"><b>?</b></a> &nbsp; &nbsp; &nbsp;
+         CEP de Destino <a href="javascript:void(-1);" onMouseover="ddrivetip('informe o CEP do local que receberá a mercadoria. É o CEP do cliente!')"; onMouseout="hideddrivetip()"><b>?</b></a> &nbsp; &nbsp; &nbsp;
+         Peso <a href="javascript:void(-1);" onMouseover="ddrivetip('Peso incluindo a embalagem. O valor deve ser informado em <b>GRAMAS</b>. Por exemplo <b>500</b> para 500 gramas, <b>1000</b> para 1 kilo e assim por diante. O Peso máximo permitido é de 30 kilos (30000 gramas). Atenção: se for omitido será considerado o peso de 1 kilo!')"; onMouseout="hideddrivetip()"><b>?</b></a>
+            <br />
+         <input type="text" name="frete_cepOrigem" id="frete_cepOrigem" value="04349-120" maxlength="9" style="width: 100px;" /> &nbsp; &nbsp;
+         <input type="text" name="frete_cepDestino" id="frete_cepDestino" value="" maxlength="9" style="width: 100px;" /> &nbsp; &nbsp;
+         <input type="text" name="frete_peso" id="frete_peso" value="" maxlength="9" style="width: 100px;" />
+        </div>
+
+        <div id="divfrete" class="box_form_l" style="font-weight:bold; color:#339966;">
+         &nbsp;<br />&nbsp;
+        </div>
+
+        <div class="box_form_r">
+         <input type="button" value="Calcular Frete" onclick="javascript:frete();" />
+        </div>
+
+        <p style="border-top: solid 1px #DDD; margin: 10px 0 0 0; float: left; width: 100%;">&nbsp;</p>
+
+        <div class="box_form_full">
+         Endereço de Entrega ( <a onclick="javascript:copyAddress();" href="javascript:void(-1);" title="copiar endereço atual da empresa">copiar endereço atual da empresa</a> ):<br />
+         <textarea name="form_enderecoEntrega" id="form_enderecoEntrega" style="width: 880px; height: 60px;">Av Pedro Severino Junior, 124
+São Paulo/SP</textarea>
+        </div>
+
+        <div class="box_form_full">
+         Breve descrição do Orçamento: <br />
+         <textarea name="form_descricao" style="width: 880px; height: 60px;">Descrição de teste</textarea>
+        </div>
+
+        <div class="box_form_full">
+         Personalização / Serviços Adicionais:<br />
+         <textarea name="form_servicosAdicionais" style="width: 880px; height: 60px;">personalização de teste</textarea>
+        </div>
+
+        <div class="box_form_full">
+         Notas ( visível somente pela administração )<br />
+         <textarea name="form_notas" style="width: 880px; height: 60px;">notas de teste</textarea>
+        </div>
+
+        <div class="box_form_full">
+                            <input type="submit" value="Editar Dados!" name="bSubmit" style="width: 130px;" onclick="calcOrcamento(2),calcOrcamento(2);" />
+                    </div>
+
+    </form>
+
+    
+	<div class="clear">&nbsp;</div>
+	<div id="footer">2005-2012 &copy; SIM V 0.10 - Desenvolvimento <a href="http://www.awsoft.com.br" target="_blank" title="AWSoft!">AWSoft!</a></div>
+</div>
+
+</body>
+</html>

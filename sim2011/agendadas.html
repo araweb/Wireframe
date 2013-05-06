@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+<head>
+<title>AWSoft! Dev</title>
+<meta name="date" content="17/6/2006 16:14" />
+<meta name="author" content="AWSoft!" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="shortcut icon" href="favicon.ico" />
+<link type="text/css" rel="stylesheet" href="style.css" />
+
+<script type="text/javascript" src="plugins/libjs/lib.js"></script>
+<script type="text/javascript" src="plugins/libjs/tolltip.js"></script>
+<script type="text/javascript" src="plugins/libjs/arah.js"></script>
+
+<script>
+function search(q) {
+    if (document.formq.q.value.length < 3 || document.formq.q.value == q) {
+        window.alert('Mínimo de três caracteres para a busca!');
+        document.formq.q.focus();
+        return false;
+    }
+    document.formq.submitq.disabled = true;
+}
+</script>
+
+</head>
+<body>
+
+<div id="header_top">
+	<div class="right" style="text-align: right;">
+            olá <b>Ará!</b> &nbsp;|&nbsp;
+            <a href="javascript:void(-1);" title="Usuários">Usuários</a> &nbsp;|&nbsp;
+			<a href="javascript:void(-1);" title="Minha Conta">Minha Conta</a> &nbsp;|&nbsp; 
+            <a href="javascript:void(-1);" title="Sair" style="color:#F00;">Sair</a>
+	</div>
+
+    <h2><img src="images/sim/logo_awsoft.jpg" style="max-height: 90px;" /></h2>
+</div>
+
+<div class="menu">
+    <ul>
+    <li><a href="http://itaubba-economia/sim/modulos/home" target="_self" title="Home">Home</a>
+        </li>
+    <li><a href="http://itaubba-economia/sim/modulos/clientes" target="_self" title="Clientes">Clientes</a>
+        </li>
+    <li><a href="http://itaubba-economia/sim/modulos/relatorios/newsletters_ext.php" target="_self" title="Relatórios">Relatórios</a>
+        </li>
+    <li><a href="http://itaubba-economia/sim/modulos/clientes/grupos.php" target="_self" title="Grupos">Grupos</a>
+        </li>
+    <li><a href="http://itaubba-economia/sim/modulos/relatorios/newsletters_ext_smtps.php" target="_self" title="Remetentes">Remetentes</a>
+        </li>
+</ul></div>
+
+	 <h1 class="title_pag"><span>Você está em:</span> Relatórios &raquo; Agendados</h1>
+
+<div id="content_main" style="padding-top: 5px;">
+
+	<div style="border-bottom: solid 1px #DDD; padding: 0 0 10px 0; float: left; width: 100%;">
+        <a href="newsletters_ext.php" title="Relatórios">Relatórios</a> ( <a href="newsletters_ext_cadastra.php" title="novo">novo</a> | <a href="envios_log.php" title="logs de envio">logs de envio</a> )
+    </div>
+	<div>&nbsp;</div>
+
+			<table width="100%" cellpadding="0" cellspacing="0" class="table_ab">
+				<tr>
+					<td class="tha" style="width: 40px;">ID</td>
+					<td class="tha" style="width: 135px;">Envio iníciado em</td>
+					<td class="tha">Relatório</td>
+					<td class="tha" style="width: 50px;">Status</td>
+					<td class="tha" style="width: 50px;">Enviadas</td>
+					<td class="tha" style="width: 50px;">Restantes</td>
+					<td class="tha" style="width: 50px;">Total</td>
+					<td class="tha" style="width: 100px;">Ações</td>
+				</tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';" class="row_a">
+					<td class="td_a">1006</td>
+					<td class="td_a">10/07/2012 às 12:44:18</td>
+					<td class="td_a">LatAm Talking Points: Eyes on the Copom</td>
+					<td class="td_a">Enviando</td>
+					<td class="td_a">4586</td>
+					<td class="td_a">5571</td>
+					<td class="td_a">10157</td>
+					<td class="td_a"><a href="" title="Pausar">Pausar</a> | <a href="" title="Cancelar">Cancelar</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+					<td class="td_a">1005</td>
+					<td class="td_a">10/07/2012 às 12:44:00</td>
+					<td class="td_a">MACRO VISION - Colombia: Slowing but Still</td>
+					<td class="td_a">Pausado</td>
+					<td class="td_a">4702</td>
+					<td class="td_a">4586</td>
+					<td class="td_a">9288</td>
+					<td class="td_a"><a href="" title="Pausar">Pausar</a> | <a href="" title="Cancelar">Cancelar</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';" class="row_a">
+					<td class="td_a">1004</td>
+					<td class="td_a">10/07/2012 às 12:43:00</td>
+					<td class="td_a">MACRO VISÃO - Colômbia: Economia desacelera</td>
+					<td class="td_a">Enviando</td>
+					<td class="td_a">1022</td>
+					<td class="td_a">8362</td>
+					<td class="td_a">9384</td>
+					<td class="td_a"><a href="" title="Pausar">Pausar</a> | <a href="" title="Cancelar">Cancelar</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+					<td class="td_a">1003</td>
+					<td class="td_a">10/07/2012 às 12:42:30</td>
+					<td class="td_a">The Week Ahead in Brazil: Just Another 50-Point</td>
+					<td class="td_a">Pausado</td>
+					<td class="td_a">934</td>
+					<td class="td_a">4798</td>
+					<td class="td_a">5732</td>
+					<td class="td_a"><a href="" title="Pausar">Pausar</a> | <a href="" title="Cancelar">Cancelar</a></td>
+	            </tr>
+                <tr onMouseOver="this.id='rol';" onMouseOut="this.id='bg';" class="row_a">
+					<td class="td_a">1002</td>
+					<td class="td_a">10/07/2012 às 12:41:00</td>
+					<td class="td_a">LatAm Talking Points: Mexican Inflation Rises</td>
+					<td class="td_a">Enviando</td>
+					<td class="td_a">2048</td>
+					<td class="td_a">885</td>
+					<td class="td_a">2933</td>
+					<td class="td_a"><a href="" title="Pausar">Pausar</a> | <a href="" title="Cancelar">Cancelar</a></td>
+	            </tr>
+			</table>
+
+	<div class="clear">&nbsp;</div>
+	<div id="footer">2005-2012 &copy; SIM V 0.3 - Desenvolvimento <a href="http://www.awsoft.com.br" target="_blank" title="AWSoft!">AWSoft!</a></div>
+</div>
+
+</body>
+</html>

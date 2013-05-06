@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+<head>
+<title>AWSoft! Dev</title>
+<meta name="date" content="17/6/2006 16:14" />
+<meta name="author" content="AWSoft!" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="shortcut icon" href="favicon.ico" />
+<link type="text/css" rel="stylesheet" href="style.css" />
+
+<script type="text/javascript" src="plugins/libjs/lib.js"></script>
+<script type="text/javascript" src="plugins/libjs/tolltip.js"></script>
+
+<script>
+
+function validate() {
+    document.form1.bSubmit.disabled = true;
+}
+
+function search() {
+    q = document.getElementById('q');
+    if (q.value == 'Buscar' || q.value == '') {
+        window.alert('Informe uma busca válida!');
+        q.focus();
+        return false;
+    }
+    document.getElementById('submitq').disabled = true;
+}
+
+</script>
+
+<script type="text/javascript" language="javascript" src="plugins/lytebox/lytebox.js"></script>
+<link type="text/css" media="screen" rel="stylesheet" href="plugins/lytebox/lytebox.css" />
+
+<style>
+.abvd {
+	margin: 0 0 0 20px;
+	width: 890px;
+}
+</style>
+
+</head>
+<body>
+
+<div id="header_top">
+	<div class="right" style="text-align: right;">
+            olá <b>Ará!</b> &nbsp;|&nbsp;
+            <a href="javascript:void(-1);" title="Usuários">Usuários</a> &nbsp;|&nbsp;
+			<a href="javascript:void(-1);" title="Minha Conta">Minha Conta</a> &nbsp;|&nbsp; 
+            <a href="javascript:void(-1);" title="Sair" style="color:#F00;">Sair</a>
+
+		<form name="formq" method="post" action="/sim-extras/modulos/orcamentos/cadastra2.php" onsubmit="return search();">
+            <select name="tipo" style="padding: 2px; width: 170px;">
+                <option value="a.id">Número do Orçamento</option>
+                <option value="a.nome">Solicitante</option>
+                <option value="a.enderecoEntrega">Endereço de Entrega</option>
+                <option value="a.descricao">Descrição</option>
+                <option value="a.servicosAdicionais">Serviços Adicionais</option>
+                <option value="a.notas">Notas</option>
+            </select>&nbsp;
+			<input name="q" id="q" type="text" style="width: 163px; padding: 2px;" value="Buscar" onfocus="if(this.value==this.defaultValue)this.value=''" onblur="if(this.value=='')this.value=this.defaultValue" />&nbsp;
+			<input type="button" name="submitq" id="submitq" value="ok!" style="width: 35px; padding: 1px;" />
+		</form>
+	</div>
+
+    <h2><img src="images/sim/logo_awsoft.jpg" style="max-height: 90px;" /></h2>
+</div>
+
+<div class="menu">
+    		<ul class="menu-hv">
+                    <li><a href="index.html" target="_self" title="Home">Home</a>
+                        </li>
+                    <li><a href="javascript:void(-1);" target="_self" title="Ferramentas">Ferramentas</a>
+                            <ul>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Links">Links</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Banners">Banners</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Newsletters">Newsletters</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Gerenciador">Gerenciador</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Páginas">Páginas</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Textos">Textos</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Forms">Forms</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Temas">Temas</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Widgets">Widgets</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Logos">Logos</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Configurações">Configurações</a>
+                                </ul>
+                        </li>
+        		</ul></div>
+
+<h1 class="title_pag"><span>Você está em:</span> Orçamentos &raquo; Novo ...</h1>
+
+<div id="content_main" style="padding-top: 5px;">
+
+	<div style="border-bottom: solid 1px #DDD; padding: 0 0 10px 0; float: left; width: 100%;">
+		<p style="float: right;">passo <b>2</b> de <b>2</b></p>
+        criando orçamento para a conta <a title="MBM VISUAL" href="javascript:void(-1);">MBM VISUAL</a>
+	</div>
+	<p>&nbsp;</p>
+
+        <form name="form1" method="post" action="dao.php" onsubmit="javascript:return validate(this);" class="form_zx">
+         <input type="hidden" name="action" value="insert" />
+         <input type="hidden" name="redir" value="edita" />
+         <input type="hidden" name="nprodutos" value="2" />
+         <input type="hidden" name="form_idEmpresa" value="117" />
+
+        <div class="box_form_l">
+         Empresa solicitante:<br />
+         <input type="text" name="empresa" maxlength="40" value="MBM VISUAL" style="width:385px;" readonly />
+        </div>
+
+        <div class="box_form_r">
+         Adicionar nome de solicitante <a href="javascript:void(-1);" onMouseover="ddrivetip('nome da pessoa de dentro da empresa cliente responsável pelo orçamento')"; onMouseout="hideddrivetip()"><b>?</b></a><br />
+         <input type="text" name="form_nome" maxlength="20" value="" style="width:385px;" />
+        </div>
+
+            <p style="clear: both;">&nbsp;</p>
+        
+            <div class="abvd" onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+
+                <div class="box_form_full">
+                    <p style="float: right;">&nbsp;</p>
+                    <p style="width: 700px;"><b style="color: #C00;">Produto:</b> <b>Mochila Rapel</b> ( <a href="produtos_info.php?id=23" rel="lyteframe" title="informações deste produto" rev="width: 650px; height: 350px; scrolling: auto;">informações deste produto</a> )</p>
+                     <input type="hidden" name="produto__1__idProduto" id="produto__1__idProduto" value="23" />
+                     <input type="hidden" name="produto__1__nome" id="produto__1__nome" value="Mochila Rapel" />
+                     <input type="hidden" name="produto__1__foto" id="produto__1__foto" value="mochilas03.jpg" />
+                </div>
+
+                <div class="clear" style="padding: 0 0 0 20px;">
+                  <table border="0" cellspacing="0" cellpadding="0" style="margin: 10px 0 10px 0;">
+                    <tr>
+                        <td>Quantidade (1)<br /><input type="text" name="produto__1__quantidade" id="produto__1__quantidade" value="" maxlength="6" style="width:90px;" /></td>
+                        <td>&nbsp; &nbsp; &nbsp;</td>
+                        <td>Quantidade (2)<br /><input type="text" name="produto__1__quantidade_extra1" id="produto__1__quantidade_extra1" value="" maxlength="6" style="width:90px;" /></td>
+                        <td>&nbsp; &nbsp; &nbsp;</td>
+                        <td>Quantidade (3)<br /><input type="text" name="produto__1__quantidade_extra2" id="produto__1__quantidade_extra2" value="" maxlength="6" style="width:90px;" /></td>
+                    </tr>
+                  </table>
+                </div>
+
+            </div>
+
+            <p style="clear: both;">&nbsp;</p>
+        
+            <div class="abvd" onMouseOver="this.id='rol';" onMouseOut="this.id='bg';">
+
+                <div class="box_form_full">
+                    <p style="border: solid 0px; float: right;">&nbsp;</p>
+                    <p style="border: solid 0px; width: 700px;"><b style="color: #C00;">Produto:</b> <b>Mochila Trilha</b> ( <a href="produtos_info.php?id=24" rel="lyteframe" title="informações deste produto" rev="width: 650px; height: 350px; scrolling: auto;">informações deste produto</a> )</p>
+                     <input type="hidden" name="produto__1__idProduto" id="produto__1__idProduto" value="24" />
+                     <input type="hidden" name="produto__1__nome" id="produto__1__nome" value="Mochila Trilha" />
+                     <input type="hidden" name="produto__1__foto" id="produto__1__foto" value="mochilas06.jpg" />
+                </div>
+
+                <div class="clear" style="padding: 0 0 0 20px;">
+                  <table border="0" cellspacing="0" cellpadding="0" style="margin: 10px 0 10px 0;">
+                    <tr>
+                        <td>Quantidade (1)<br /><input type="text" name="produto__1__quantidade" id="produto__1__quantidade" value="" maxlength="6" style="width:90px;" /></td>
+                        <td>&nbsp; &nbsp; &nbsp;</td>
+                        <td>Quantidade (2)<br /><input type="text" name="produto__1__quantidade_extra1" id="produto__1__quantidade_extra1" value="" maxlength="6" style="width:90px;" /></td>
+                        <td>&nbsp; &nbsp; &nbsp;</td>
+                        <td>Quantidade (3)<br /><input type="text" name="produto__1__quantidade_extra2" id="produto__1__quantidade_extra2" value="" maxlength="6" style="width:90px;" /></td>
+                    </tr>
+                  </table>
+                </div>
+
+            </div>
+
+            <p style="clear: both;">&nbsp;</p>
+        
+        <div class="box_form_full">
+            <input type="button" value="Gerar Orçamento!" name="bSubmit" style="width: 160px;" />
+        </div>
+
+        </form>
+
+    
+	<div class="clear">&nbsp;</div>
+	<div id="footer">2005-2012 &copy; SIM V 0.10 - Desenvolvimento <a href="http://www.awsoft.com.br" target="_blank" title="AWSoft!">AWSoft!</a></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+<head>
+<title>AWSoft! Dev</title>
+<meta name="date" content="17/6/2006 16:14" />
+<meta name="author" content="AWSoft!" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="shortcut icon" href="favicon.ico" />
+<link type="text/css" rel="stylesheet" href="style.css" />
+
+<script type="text/javascript" src="plugins/libjs/lib.js"></script>
+<script type="text/javascript" src="plugins/libjs/tolltip.js"></script>
+
+<script>
+
+function validate() {
+    document.form1.bSubmit.disabled = true;
+}
+
+function search() {
+    q = document.getElementById('q');
+    if (q.value == 'Buscar' || q.value == '') {
+        window.alert('Informe uma busca válida!');
+        q.focus();
+        return false;
+    }
+    document.getElementById('submitq').disabled = true;
+}
+
+</script>
+
+<script type="text/javascript" language="javascript" src="plugins/lytebox/lytebox.js"></script>
+<link type="text/css" media="screen" rel="stylesheet" href="plugins/lytebox/lytebox.css" />
+
+<style>
+.button_select {
+	width: 50px; 
+	padding: 2px; 
+	cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="header_top">
+	<div class="right" style="text-align: right;">
+            olá <b>Ará!</b> &nbsp;|&nbsp;
+            <a href="javascript:void(-1);" title="Usuários">Usuários</a> &nbsp;|&nbsp;
+			<a href="javascript:void(-1);" title="Minha Conta">Minha Conta</a> &nbsp;|&nbsp; 
+            <a href="javascript:void(-1);" title="Sair" style="color:#F00;">Sair</a>
+
+		<form name="formq" method="post" action="/sim-extras/modulos/orcamentos/cadastra2.php" onsubmit="return search();">
+            <select name="tipo" style="padding: 2px; width: 170px;">
+                <option value="a.id">Número do Orçamento</option>
+                <option value="a.nome">Solicitante</option>
+                <option value="a.enderecoEntrega">Endereço de Entrega</option>
+                <option value="a.descricao">Descrição</option>
+                <option value="a.servicosAdicionais">Serviços Adicionais</option>
+                <option value="a.notas">Notas</option>
+            </select>&nbsp;
+			<input name="q" id="q" type="text" style="width: 163px; padding: 2px;" value="Buscar" onfocus="if(this.value==this.defaultValue)this.value=''" onblur="if(this.value=='')this.value=this.defaultValue" />&nbsp;
+			<input type="button" name="submitq" id="submitq" value="ok!" style="width: 35px; padding: 1px;" />
+		</form>
+	</div>
+
+    <h2><img src="images/sim/logo_awsoft.jpg" style="max-height: 90px;" /></h2>
+</div>
+
+<div class="menu">
+    		<ul class="menu-hv">
+                    <li><a href="index.html" target="_self" title="Home">Home</a>
+                        </li>
+                    <li><a href="javascript:void(-1);" target="_self" title="Ferramentas">Ferramentas</a>
+                            <ul>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Links">Links</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Banners">Banners</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Newsletters">Newsletters</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Gerenciador">Gerenciador</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Páginas">Páginas</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Textos">Textos</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Forms">Forms</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Temas">Temas</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Widgets">Widgets</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Logos">Logos</a>
+                                    <li><a href="javascript:void(-1);" target="_self" title="Configurações">Configurações</a>
+                                </ul>
+                        </li>
+        		</ul></div>
+
+<h1 class="title_pag"><span>Você está em:</span> Home</h1>
+
+<div id="content_main" style="padding-top: 5px;">
+
+	<div style="border-bottom: solid 1px #DDD; padding: 0 0 10px 0; float: left; width: 100%;">
+        Wireframe SIM2011
+	</div>
+
+	<p>
+
+		<ul type="square" style="margin:60px 0 0 90px; line-height:24px;">
+			<li><a href="orcamentos_cadastra1.html" title="Cadastro de Orçamento">Cadastro de Orçamento 1</a></li>
+			<li><a href="orcamentos_cadastra2.html" title="Cadastro de Orçamento">Cadastro de Orçamento 2</a></li>
+			<li><a href="orcamentos_edita.html" title="Edição de Orçamentos">Edição de Orçamentos</a></li>
+			<li><a href="orcamentos_gerar_pedido.html" title="Orçamentos Gerar Pedido">Orçamentos Gerar Pedido</a></li>
+			<li><a href="orcamentos_incluir_produto.html" title="Orçamentos Incluir Produto">Orçamentos Incluir Produto</a></li>
+		</ul>
+	
+	</p>
+
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+    
+	<div class="clear">&nbsp;</div>
+	<div id="footer">2005-2012 &copy; SIM V 0.10 - Desenvolvimento <a href="http://www.awsoft.com.br" target="_blank" title="AWSoft!">AWSoft!</a></div>
+</div>
+
+</body>
+</html>
