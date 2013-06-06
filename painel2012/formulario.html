@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+<head>
+<title>DEV AWSoft! - Painel de Controle</title>
+<meta name="date" content="17/06/2006 16:14" />
+<meta name="author" content="AWSoft!" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="shortcut icon" href="favicon.ico" />
+
+<link type="text/css" rel="stylesheet" href="style.css" />
+
+
+</head>
+
+<body>
+
+<div id="top">
+    <div id="top-left">Painel de Controle &rsaquo; <b><a href="" title="DEV AWSoft!">DEV AWSoft!</a></b></div>
+
+	<div class="menu_top">
+    	<ul>
+			<li class="line_topmenu">&nbsp;</li>
+    	    <li><a href="index.html" title="Home">Home</a></li>
+			<li class="line_topmenu">&nbsp;</li>
+            <li><a href="meus_orcamentos_edita.html" title="Meus Orçamentos">Meus Orçamentos</a></li>
+            <li class="line_topmenu">&nbsp;</li>
+            <li><a href="minha_conta_edita.html" title="Minha Conta">Minha Conta</a></li>
+            <li class="line_topmenu">&nbsp;</li>
+        </ul>
+	</div>
+
+    <div class="top-right">
+		<div style="padding: 11px 12px 0 0; float: left;">olá <b>João</b></div>
+
+		<div class="menu_top">
+	    	<ul>
+				<li class="line_topmenu">&nbsp;</li>
+				<li><a href="" title="Meu Acesso">Meu Acesso</a></li>
+				<li class="line_topmenu">&nbsp;</li>
+				<li><a title="Sair" href="" style="color: #FF0;">Sair</a></li>
+				<li class="line_topmenu">&nbsp;</li>
+	        </ul>
+		</div>
+	</div>
+</div>
+
+<div id="content">
+
+    <h1 class="titulo">Painel de Controle &rsaquo; Meu Cadastro &rsaquo; Editando ...</h1>
+
+    <div id="box_ful">
+
+        <h2 class="title-form">Cadastro de nova empresa:</h2>
+
+        <form name="formCadastro" method="post" action="" class="form_zx" onsubmit="return yav.performCheck('formCadastro', rules, 'classic');" enctype="multipart/form-data">
+            <input type="hidden" name="token" value="" />
+            <input type="hidden" name="action" value="insert" />
+            <input type="hidden" name="redir" value="edita" />
+            <input type="hidden" name="redir_error" value="cadastra" />
+
+            <div class="box_form">
+             Nome Fantasia<br />
+             <input type="text" name="form_nome" id="form_nome" maxlength="120" style="width:340px;" />
+            </div>
+
+            <div class="box_form">
+             Razão Social <a href="javascript:void(-1);" onMouseover="ddrivetip('Informe a Razão Social da sua empresa ou em caso de cadastro de pessoa física informe seu nome completo!');" onMouseout="hideddrivetip()"><b>?</b></a><br />
+             <input type="text" name="form_razaoSocial" id="form_razaoSocial" maxlength="120" style="width:340px;" />
+            </div>
+
+            <div class="box_form">
+             CNPJ <a href="javascript:void(-1);" onMouseover="ddrivetip('Informe o CNPJ da sua empresa ou em caso de cadastro de pessoa física informe seu CPF!');" onMouseout="hideddrivetip()"><b>?</b></a><br />
+             <input type="text" name="form_cnpj" id="form_cnpj" maxlength="20" style="width:340px;" />
+            </div>
+
+            <div class="box_form">
+             Endereço <a href="javascript:void(-1);" onMouseover="ddrivetip('Ex.: Rua das Palmeiras, 100<br />Utilize este padrão para que o recurso do Google Maps localize corretamente seu endereço');" onMouseout="hideddrivetip()"><b>?</b></a><br />
+             <input type="text" name="form_endereco" id="form_endereco" maxlength="150" style="width:340px;" />
+            </div>
+
+            <div class="box_form">
+             Bairro<br />
+             <input type="text" name="form_bairro" id="form_bairro" maxlength="50" style="width:340px;" />
+            </div>
+
+            <div class="box_form">
+             Cidade<br />
+             <input type="text" name="form_cidade" id="form_cidade" maxlength="50" style="width:340px;" />
+            </div>
+
+            <div class="box_form">
+             Estado<br />
+                <select name="form_estado" id="form_estado" style="width: 354px;" class="status<?=$company['status']?>">
+                    <option value="" selected="selected">Informe seu Estado</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piaui</option>
+                    <option value="PR">Paraná</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RO">Rondonia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+            </div>
+
+            <div class="box_form">
+             CEP <a href="javascript:void(-1);" onMouseover="ddrivetip('Utilize o formato 01234-000');" onMouseout="hideddrivetip()"><b>?</b></a><br />
+             <input type="text" name="form_cep" id="form_cep" maxlength="9" style="width:340px;" />
+            </div>
+
+            <div class="box_form">
+             Site<br />
+             <input type="text" name="form_site" id="form_site" maxlength="150" style="width:340px;" />
+            </div>
+
+            <div class="box_form">
+             Logo da empresa<br />
+             <input type="file" name="logo" id="logoup" size="34" style="width: 340px;" />
+            </div>
+
+			<div class="clear"></div>
+
+            <div class="box_form" style="width: 250px;">
+             Telefone Principal <a href="javascript:void(-1);" onMouseover="ddrivetip('Utilize o formato (11) 1234-5555');" onMouseout="hideddrivetip()"><b>?</b></a><br />
+             <input type="text" name="form_telefone1" id="form_telefone1" maxlength="15" style="width:218px;" />
+            </div>
+
+            <div class="box_form" style="width: 250px;">
+             Telefone Adicional 1 <a href="javascript:void(-1);" onMouseover="ddrivetip('Utilize o formato (11) 1234-5555');" onMouseout="hideddrivetip()"><b>?</b></a><br />
+             <input type="text" name="form_telefone2" id="form_telefone2" maxlength="15" style="width:218px;" />
+            </div>
+
+            <div class="box_form" style="width: 250px;">
+             Telefone Adicional 2 <a href="javascript:void(-1);" onMouseover="ddrivetip('Utilize o formato (11) 1234-5555');" onMouseout="hideddrivetip()"><b>?</b></a><br />
+             <input type="text" name="form_telefone3" id="form_telefone3" maxlength="15" style="width:218px;" />
+            </div>
+
+            <div class="box_form" style="width: 250px;">
+             Email Principal <a href="javascript:void(-1);" onMouseover="ddrivetip('Este email será utilizado para receber as solicitações de orçamentos enviadas através do portal');" onMouseout="hideddrivetip()"><b>?</b></a><br />
+             <input type="text" name="form_email" id="form_email" maxlength="120" style="width:218px;" />
+            </div>
+
+            <div class="box_form" style="width: 250px;">
+             Email Adicional <a href="javascript:void(-1);" onMouseover="ddrivetip('Para garantir o recebimento das suas cotações, o email aqui informado receberá uma <b>cópia de TODOS</b> os orçamentos enviados para o <b>email principal</b>.');" onMouseout="hideddrivetip()"><b>?</b></a><br />
+             <input type="text" name="form_emailExtra" id="form_emailExtra" maxlength="120" style="width:218px;" />
+            </div>
+
+            <div class="box_form" style="width: 250px;">
+             Email de Cobrança <a href="javascript:void(-1);" onMouseover="ddrivetip('Se a empresa for cadastrada em um plano pago, este email receberá os boletos bancários!');" onMouseout="hideddrivetip()"><b>?</b></a><br />
+             <input type="text" name="form_emailCobranca" id="form_emailCobranca" maxlength="120" style="width:218px;" />
+            </div>
+
+            <div class="box_form_full">
+                Descrição da Empresa <span style="font-size: 11px; color: #999;">( Não coloque dados de contato neste campo. Endereço, sites, e-mails e telefones serão removidos. )</span><br />
+                <textarea name="form_descricao" id="form_descricao" onKeyDown="textCounter('form_descricao', 'remform_descricao', 800);" onKeyUp="textCounter('form_descricao', 'remform_descricao', 800);"></textarea><br />
+                <input name="remform_descricao" id="remform_descricao" type="text" maxlength="4" value="800" readonly class="limite_caracteres" style="padding: 0; border: none; color: #C00;" /> caracteres restantes
+            </div>
+
+			<div class="line">&nbsp;</div>
+
+            <div class="box_form_full">
+                TERMOS DE USO<br />
+                <textarea name="termos-de-uso" id="termos-de-uso"></textarea>
+            </div>
+
+            <div class="box_form_full">
+				<input type="checkbox" name="acordo" id="acordo" value="1" /> LI E ESTOU DE ACORDO COM OS TERMOS DE USO
+            </div>
+
+            <div class="box_form_full">
+				<input type="radio" name="form_tipoPerfil" id="form_tipoPerfil" value="1" checked /> <b>Perfil COMPLETO</b> (funcionalidades ILIMITADAS - R$ 99,00/mensal. O boleto será gerado e enviado para o seu email)<br />
+            </div>
+
+            <div class="box_form_full">
+                <input type="radio" name="form_tipoPerfil" id="form_tipoPerfil" value="2" /> <b>Perfil SIMPLIFICADO</b> (com funcionalidades REDUZIDAS - Gratuíto)
+            </div>
+
+            <div class="box_form_full">
+                <input type="submit" value="Cadastrar Dados!" name="bSubmit" id="bSubmit" class="ipt_submit" />
+            </div>
+        </form>
+
+    </div>
+
+    <div class="clear">&nbsp;</div>
+</div>
+
+<div id="footer">
+	<b>AWSoft! Dev</b> - V 0.10 - Desenvolvimento <a href="http://www.awsoft.com.br/" title="AWSoft!" target="_blank">AWSoft!</a>
+</div>
+
+</body>
+</html>
